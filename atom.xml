@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Morris</title>
+  
+  
+  <link href="https://lovelxh95.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://lovelxh95.github.io/"/>
+  <updated>2025-08-07T17:11:33.404Z</updated>
+  <id>https://lovelxh95.github.io/</id>
+  
+  <author>
+    <name>Morris</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL面试题</title>
+    <link href="https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <published>2025-08-07T17:10:55.000Z</published>
+    <updated>2025-08-07T17:11:33.404Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;MyISAM和InnoDB的区别有哪些&quot;&gt;&lt;a href=&quot;#MyISAM和InnoDB的区别有哪些&quot; class=&quot;headerlink&quot; title=&quot;MyISAM和InnoDB的区别有哪些&quot;&gt;&lt;/a&gt;MyISAM和InnoDB的区别有哪些&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;InnoDB支持事务,</summary>
+        
+      
+    
+    
+    
+    <category term="Java面试" scheme="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="MySQL" scheme="https://lovelxh95.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+</feed>

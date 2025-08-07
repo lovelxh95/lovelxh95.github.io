@@ -1,6 +1,0 @@
-{
-  "repository": "lovelxh95/lovelxh95.github.io",
-  "branch": "main",
-  "message": "Site updated: {{ now(\"YYYY-MM-DD HH:mm:ss\") }}",
-  "token": ""
-}
