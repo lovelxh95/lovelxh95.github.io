@@ -3,11 +3,11 @@
   <title>Morris</title>
   
   
-  <link href="https://lovelxh95.github.io/atom.xml" rel="self"/>
+  <link href="https://hadoop.dpdns.org/atom.xml" rel="self"/>
   
-  <link href="https://lovelxh95.github.io/"/>
+  <link href="https://hadoop.dpdns.org/"/>
   <updated>2025-08-08T06:57:29.236Z</updated>
-  <id>https://lovelxh95.github.io/</id>
+  <id>https://hadoop.dpdns.org/</id>
   
   <author>
     <name>Morris</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
-    <link href="https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/"/>
-    <id>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</id>
+    <link href="https://hadoop.dpdns.org/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/"/>
+    <id>https://hadoop.dpdns.org/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</id>
     <published>2025-08-08T06:50:05.000Z</published>
     <updated>2025-08-08T06:57:29.236Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="Java面试" scheme="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="Java面试" scheme="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/"/>
     
     
-    <category term="Java基础" scheme="https://lovelxh95.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    <category term="Java基础" scheme="https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
     <title>MySQL面试题</title>
-    <link href="https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <link href="https://hadoop.dpdns.org/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://hadoop.dpdns.org/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2025-08-07T17:10:55.000Z</published>
     <updated>2025-08-07T17:11:33.404Z</updated>
     
@@ -60,10 +60,10 @@
     
     
     
-    <category term="Java面试" scheme="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="Java面试" scheme="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/"/>
     
     
-    <category term="MySQL" scheme="https://lovelxh95.github.io/tags/MySQL/"/>
+    <category term="MySQL" scheme="https://hadoop.dpdns.org/tags/MySQL/"/>
     
   </entry>
   

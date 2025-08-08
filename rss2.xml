@@ -4,9 +4,9 @@
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Morris</title>
-    <link>https://lovelxh95.github.io/</link>
+    <link>https://hadoop.dpdns.org/</link>
     
-    <atom:link href="https://lovelxh95.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
     <pubDate>Fri, 08 Aug 2025 06:57:29 GMT</pubDate>
@@ -14,8 +14,8 @@
     
     <item>
       <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
-      <link>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</link>
-      <guid>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</guid>
+      <link>https://hadoop.dpdns.org/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</link>
+      <guid>https://hadoop.dpdns.org/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</guid>
       <pubDate>Fri, 08 Aug 2025 06:50:05 GMT</pubDate>
       
         
@@ -29,20 +29,20 @@
       
       
       
-      <category domain="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
+      <category domain="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
       
       
-      <category domain="https://lovelxh95.github.io/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</category>
+      <category domain="https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</category>
       
       
-      <comments>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/#disqus_thread</comments>
+      <comments>https://hadoop.dpdns.org/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>MySQL面试题</title>
-      <link>https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <guid>https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <link>https://hadoop.dpdns.org/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <guid>https://hadoop.dpdns.org/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
       <pubDate>Thu, 07 Aug 2025 17:10:55 GMT</pubDate>
       
         
@@ -57,13 +57,13 @@
       
       
       
-      <category domain="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
+      <category domain="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
       
       
-      <category domain="https://lovelxh95.github.io/tags/MySQL/">MySQL</category>
+      <category domain="https://hadoop.dpdns.org/tags/MySQL/">MySQL</category>
       
       
-      <comments>https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread</comments>
+      <comments>https://hadoop.dpdns.org/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread</comments>
       
     </item>
     
