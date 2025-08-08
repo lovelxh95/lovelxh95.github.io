@@ -1,3 +1,4 @@
+https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/
 https://lovelxh95.github.io/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://lovelxh95.github.io/books/index.html
 https://lovelxh95.github.io/repository/index.html
@@ -6,4 +7,5 @@ https://lovelxh95.github.io/categories/index.html
 https://lovelxh95.github.io/about/index.html
 https://lovelxh95.github.io/
 https://lovelxh95.github.io/tags/MySQL/
+https://lovelxh95.github.io/tags/Java%E5%9F%BA%E7%A1%80/
 https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/

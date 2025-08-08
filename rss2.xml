@@ -9,8 +9,35 @@
     <atom:link href="https://lovelxh95.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 07 Aug 2025 17:11:33 GMT</pubDate>
+    <pubDate>Fri, 08 Aug 2025 06:57:29 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
+      <link>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</link>
+      <guid>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</guid>
+      <pubDate>Fri, 08 Aug 2025 06:50:05 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;在 Java 中，使用 &lt;strong&gt;&lt;code&gt;new String(&amp;quot;abc&amp;quot;)&lt;/code&gt; 可能创建 &lt;strong&gt;1 个或 2 个对象&lt;/strong&gt;&lt;/strong&gt;，具体取决于字符串常量池（String Pool）中是否已存在 “abc”</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://lovelxh95.github.io/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
+      
+      
+      <category domain="https://lovelxh95.github.io/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</category>
+      
+      
+      <comments>https://lovelxh95.github.io/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>MySQL面试题</title>
