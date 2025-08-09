@@ -9,8 +9,31 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 08 Aug 2025 06:57:29 GMT</pubDate>
+    <pubDate>Sat, 09 Aug 2025 05:29:04 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>数据库三范式的理解与看法</title>
+      <link>https://hadoop.dpdns.org/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/</link>
+      <guid>https://hadoop.dpdns.org/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/</guid>
+      <pubDate>Sat, 09 Aug 2025 05:27:05 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;数据库三范式（First Normal Form, 1NF；Second Normal Form, 2NF；Third Normal Form,</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
