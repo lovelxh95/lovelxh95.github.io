@@ -9,8 +9,36 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 09 Aug 2025 05:32:28 GMT</pubDate>
+    <pubDate>Mon, 11 Aug 2025 06:03:40 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>sleep() 和 wait() 有什么区别</title>
+      <link>https://hadoop.dpdns.org/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</link>
+      <guid>https://hadoop.dpdns.org/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</guid>
+      <pubDate>Mon, 11 Aug 2025 05:54:40 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;sleep方法&lt;/strong&gt;：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;wait方法&lt;/strong&gt;：是Object的方法，必须与synchron</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</category>
+      
+      
+      <category domain="https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</category>
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>数据库三范式的理解与看法</title>

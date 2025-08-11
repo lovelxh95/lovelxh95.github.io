@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>sleep() 和 wait() 有什么区别</title>
+      <link href="/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+      <url>/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<p><strong>sleep方法</strong>：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）</p><p><strong>wait方法</strong>：是Object的方法，必须与synchronized关键字一起使用，线程进入阻塞状态，当notify或者notifyall被调用后，会解除阻塞。但是，只有重新占用互斥锁之后才会进入可运行状态。睡眠时，会释放互斥锁；</p><p><strong>在 Java 中，</strong><code>sleep()</code> 和 <code>wait()</code> 都是用于线程控制的方法，但它们有以下几个关键区别：</p><ol><li><strong>所属类不同</strong></li></ol><ul><li><code>sleep()</code> 是 <code>Thread</code> 类的静态方法</li><li><code>wait()</code> 是 <code>Object</code> 类的实例方法</li></ul><ol start="2"><li><strong>对锁的影响不同</strong></li></ol><ul><li><code>sleep()</code> 不会释放当前线程所持有的锁</li><li><code>wait()</code> 会释放当前线程所持有的锁，让其他线程有机会获取该锁</li></ul><ol start="3"><li><strong>唤醒方式不同</strong></li></ol><ul><li><code>sleep()</code> 时间到后会自动唤醒，或者被 <code>interrupt()</code> 方法中断唤醒</li><li><code>wait()</code> 需要其他线程调用相同对象的 <code>notify()</code> 或 <code>notifyAll()</code> 方法才能唤醒，或者指定等待时间后自动唤醒</li></ul><ol start="4"><li><strong>使用场景不同</strong></li></ol><ul><li><code>sleep()</code> 通常用于暂停线程执行一段固定时间，不依赖于其他线程的状态</li><li><code>wait()</code> 通常用于线程间通信，让线程等待某个条件满足后再继续执行</li></ul><ol start="5"><li><strong>调用要求不同</strong></li></ol><ul><li><code>sleep()</code> 可以在任何地方调用，不需要持有对象锁</li><li><code>wait()</code> 必须在同步代码块（<code>synchronized</code>）中调用，且当前线程必须持有该对象的锁</li></ul><p><strong>示例代码：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sleep() 示例</span></span><br><span class="line">Thread.sleep(<span class="number">1000</span>); <span class="comment">// 让当前线程休眠1秒，不释放锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// wait() 示例</span></span><br><span class="line"><span class="keyword">synchronized</span> (obj) &#123;</span><br><span class="line">    obj.wait(); <span class="comment">// 释放obj对象的锁，进入等待状态</span></span><br><span class="line">    <span class="comment">// 或指定等待时间</span></span><br><span class="line">    obj.wait(<span class="number">1000</span>); <span class="comment">// 最多等待1秒</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>需要注意的是，当 <code>wait()</code> 被唤醒后，线程不会立即执行，而是需要重新获取对象锁后才能继续执行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库三范式的理解与看法</title>
       <link href="/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/"/>
       <url>/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/</url>
