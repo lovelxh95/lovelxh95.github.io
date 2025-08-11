@@ -6,7 +6,7 @@
   <link href="https://hadoop.dpdns.org/atom.xml" rel="self"/>
   
   <link href="https://hadoop.dpdns.org/"/>
-  <updated>2025-08-11T06:03:40.157Z</updated>
+  <updated>2025-08-11T06:20:58.996Z</updated>
   <id>https://hadoop.dpdns.org/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM 常用命令</title>
+    <link href="https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2025-08-11T06:18:37.000Z</published>
+    <updated>2025-08-11T06:20:58.996Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JPS&lt;/strong&gt;：JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;jstat&lt;/strong&gt;：jstat(JVM statistics</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>sleep() 和 wait() 有什么区别</title>
