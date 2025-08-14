@@ -6,7 +6,7 @@
   <link href="https://hadoop.dpdns.org/atom.xml" rel="self"/>
   
   <link href="https://hadoop.dpdns.org/"/>
-  <updated>2025-08-11T06:20:58.996Z</updated>
+  <updated>2025-08-14T13:32:52.937Z</updated>
   <id>https://hadoop.dpdns.org/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2025-08-11T06:18:37.000Z</published>
-    <updated>2025-08-11T06:20:58.996Z</updated>
+    <updated>2025-08-14T13:32:52.937Z</updated>
     
     
       
@@ -36,6 +36,10 @@
     
     
     
+    <category term="Java面试" scheme="https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="Java基础" scheme="https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   

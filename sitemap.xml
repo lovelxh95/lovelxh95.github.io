@@ -4,7 +4,7 @@
   <url>
     <loc>https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2025-08-11</lastmod>
+    <lastmod>2025-08-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,22 +94,22 @@
 
   <url>
     <loc>https://hadoop.dpdns.org/</loc>
-    <lastmod>2025-08-11</lastmod>
+    <lastmod>2025-08-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://hadoop.dpdns.org/tags/MySQL/</loc>
-    <lastmod>2025-08-11</lastmod>
+    <loc>https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2025-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2025-08-11</lastmod>
+    <loc>https://hadoop.dpdns.org/tags/MySQL/</loc>
+    <lastmod>2025-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -118,7 +118,7 @@
   
   <url>
     <loc>https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2025-08-11</lastmod>
+    <lastmod>2025-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
