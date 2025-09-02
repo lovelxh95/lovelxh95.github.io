@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hadoop.dpdns.org/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%88C++%E5%AE%9E%E7%8E%B0%EF%BC%89%20/</loc>
+    
+    <lastmod>2025-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hadoop.dpdns.org/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2025-08-14</lastmod>
@@ -94,7 +103,7 @@
 
   <url>
     <loc>https://hadoop.dpdns.org/</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,14 +111,21 @@
   
   <url>
     <loc>https://hadoop.dpdns.org/tags/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hadoop.dpdns.org/tags/MySQL/</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hadoop.dpdns.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -118,7 +134,14 @@
   
   <url>
     <loc>https://hadoop.dpdns.org/categories/Java%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hadoop.dpdns.org/categories/408/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
