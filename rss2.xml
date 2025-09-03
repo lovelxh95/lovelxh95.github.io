@@ -9,7 +9,7 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 03 Sep 2025 13:26:08 GMT</pubDate>
+    <pubDate>Wed, 03 Sep 2025 13:36:21 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -29,6 +29,10 @@
       
       
       
+      <category domain="https://hadoop.dpdns.org/categories/408/">408</category>
+      
+      
+      <category domain="https://hadoop.dpdns.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</category>
       
       
       <comments>https://hadoop.dpdns.org/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/#disqus_thread</comments>
