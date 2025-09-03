@@ -9,8 +9,31 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 03 Sep 2025 13:57:12 GMT</pubDate>
+    <pubDate>Wed, 03 Sep 2025 14:04:29 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Cache替换算法</title>
+      <link>https://hadoop.dpdns.org/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/</link>
+      <guid>https://hadoop.dpdns.org/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/</guid>
+      <pubDate>Wed, 03 Sep 2025 14:04:17 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;替换算法汇总&quot;&gt;&lt;a href=&quot;#替换算法汇总&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Cache映射</title>

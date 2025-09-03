@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>Cache替换算法</title>
+<meta name="keywords" content="Cache替换算法, Morris">
+<meta name="description" content="替换算法汇总
+
+
+算法
+英文全称
+原理
+优点
+缺点
+适用场景
+
+
+
+随机算法
+Random Replacement
+随机选择一个 Cache 块替换
+实现简单，硬件开销小
+未考虑访问模式，命中率低
+对性能要求不高，硬件资源有限的场景
+
+
+先">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Cache替换算法">
+<meta property="og:description" content="替换算法汇总
+
+
+算法
+英文全称
+原理
+优点
+缺点
+适用场景
+
+
+
+随机算法
+Random Replacement
+随机选择一个 Cache 块替换
+实现简单，硬件开销小
+未考虑访问模式，命中率低
+对性能要求不高，硬件资源有限的场景
+
+
+先">
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://hadoop.dpdns.org">
+        <img class="avatar" src="/images/img.jpg" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://hadoop.dpdns.org">
+        <h1 class="site-title">Morris</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Cache替换算法</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-09-03</span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h3 id="替换算法汇总"><a href="#替换算法汇总" class="headerlink" title="替换算法汇总"></a>替换算法汇总</h3><table>
+<thead>
+<tr>
+<th>算法</th>
+<th>英文全称</th>
+<th>原理</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>随机算法</strong></td>
+<td>Random Replacement</td>
+<td>随机选择一个 Cache 块替换</td>
+<td>实现简单，硬件开销小</td>
+<td>未考虑访问模式，命中率低</td>
+<td>对性能要求不高，硬件资源有限的场景</td>
+</tr>
+<tr>
+<td><strong>先进先出算法</strong></td>
+<td>FIFO（First In First Out）</td>
+<td>替换最早进入 Cache 的块</td>
+<td>实现简单，硬件开销小</td>
+<td>未考虑数据访问频率，可能替换热点数据</td>
+<td>嵌入式系统、简单处理器</td>
+</tr>
+<tr>
+<td><strong>最近最少使用算法</strong></td>
+<td>LRU（Least Recently Used）</td>
+<td>替换最近最久未使用的块</td>
+<td>较好地利用时间局部性，命中率高</td>
+<td>实现较复杂，需要额外硬件支持</td>
+<td>通用处理器、对性能要求高的场景</td>
+</tr>
+<tr>
+<td><strong>最不经常使用算法</strong></td>
+<td>LFU（Least Frequently Used）</td>
+<td>替换访问次数最少的块</td>
+<td>适合访问频率差异大的场景</td>
+<td>对访问模式变化不敏感，实现复杂</td>
+<td>特定应用场景，如数据库缓存</td>
+</tr>
+</tbody></table>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB"><span class="top-box-text">替换算法汇总</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/09/03/Cache%E6%98%A0%E5%B0%84/">
+          <h3 class="post-title">
+            
+            下一篇：Cache映射
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+    <div id="gitalk-container"></div>
+
+
+
+    <link rel="stylesheet" href="/style/gitalk.min.css"/>
+    <script src="/js/gitalk.min.js"></script>
+    <script>
+        const config = {"clientId":"Ov23liVGmP9dlXycyD2g","clientSecret":"fa53a45fc9db8564659c965e36e77195dae1a5a2","repository":"comment","owner":"lovelxh95","admin":"lovelxh95","createIssueManually":true};
+        const gitalk = new Gitalk({
+            clientID: config.clientId,
+            clientSecret: config.clientSecret,
+            repo: config.repository,
+            owner: config.owner,
+            admin: [config.owner],
+            id: location.pathname.slice(1, location.pathname.lastIndexOf('/')).substring(0, 49),       // Ensure uniqueness and length less than 50
+            distractionFreeMode: false,  // Facebook-like distraction free mode
+            createIssueManually: config.createIssueManually ? true : false
+        });
+
+        gitalk.render('gitalk-container')
+
+    </script>
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/lovelxh95" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"lazyload_placeholder":null,"photo_zoom":"simple-lightbox"},"search":{"enable":false,"type":"algolia","placeholder":"输入关键词搜索...","algolia":{"appID":"","apiKey":"","indexName":""}},"language":"cn"}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+    <script async src="https://hm.baidu.com/hm.js?e73b995e5200578b96d1fe27c8272c05"></script>
+
+
+
+
+  </body>
+</html>
+
