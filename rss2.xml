@@ -9,8 +9,31 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 02 Sep 2025 14:35:28 GMT</pubDate>
+    <pubDate>Wed, 03 Sep 2025 13:26:08 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Cache块有效性</title>
+      <link>https://hadoop.dpdns.org/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</link>
+      <guid>https://hadoop.dpdns.org/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</guid>
+      <pubDate>Wed, 03 Sep 2025 13:10:46 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Cache块有效性&quot;&gt;&lt;a href=&quot;#Cache块有效性&quot; class=&quot;headerlink&quot; title=&quot;Cache块有效性&quot;&gt;&lt;/a&gt;Cache块有效性&lt;/h2&gt;&lt;h3 id=&quot;一，什么是Cache的有效性&quot;&gt;&lt;a href=&quot;#一，什么是Cache的有效性&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>排序算法(C++实现)</title>

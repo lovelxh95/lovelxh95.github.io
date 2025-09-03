@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Cache块有效性</title>
+      <link href="/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/"/>
+      <url>/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Cache块有效性"><a href="#Cache块有效性" class="headerlink" title="Cache块有效性"></a>Cache块有效性</h2><h3 id="一，什么是Cache的有效性"><a href="#一，什么是Cache的有效性" class="headerlink" title="一，什么是Cache的有效性"></a>一，什么是Cache的有效性</h3><p>在 Cache 结构中，数据是以块（Block 或 Line）为单位存储的。每个 Cache 块通常包含以下几个部分</p><ul><li>数据块：主存中的数据副本</li><li>标记（Tag）：用于标识对于主存地址</li><li>有效位：表示Cache块是否有效</li></ul><h3 id="二，为什么需要-Cache-块有效性"><a href="#二，为什么需要-Cache-块有效性" class="headerlink" title="二，为什么需要 Cache 块有效性"></a>二，为什么需要 Cache 块有效性</h3><p>当计算机刚启动时，Cache 为空，其中的数据是不确定的。此时，如果没有有效位，CPU 可能会误用这些无效数据，导致程序错误。因此，<strong>有效位的作用就是防止访问无效数据</strong>。</p><table><thead><tr><th>有效位</th><th>含义</th></tr></thead><tbody><tr><td>0</td><td>Cache行无效，数据不可用，必须从内存重新加载</td></tr><tr><td>1</td><td>Cache行有效，数据可用，可以直接读取</td></tr></tbody></table>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>排序算法(C++实现)</title>
       <link href="/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/"/>
       <url>/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/</url>
