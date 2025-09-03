@@ -306,7 +306,7 @@ Random Replacement
 <li><strong>实现复杂，开销大</strong>：需要跟踪记录每个数据块的访问历史。常见的实现方式是使用一个双向链表和哈希表的组合，每次访问都需要更新链表节点的位置，这在硬件和软件上都有较高的开销。</li>
 </ul>
 <hr>
-<h3 id="3-最不经常使用算法-Least-Frequently-Used-LFU"><a href="#3-最不经常使用算法-Least-Frequently-Used-LFU" class="headerlink" title="3. 最不经常使用算法 (Least Frequently Used, LFU)"></a>3. 最不经常使用算法 (Least Frequently Used, LFU)</h3><h4 id="算法讲解-2"><a href="#算法讲解-2" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LFU 算法的核心思想是**“如果一个数据在过去一段时间内被访问的次数很少，那么它在将来被访问的可能性也很小”<strong>。因此，当需要替换时，LFU 会选择</strong>被访问次数最少的数据块**进行替换。如果存在多个访问次数相同的数据块，通常会结合 LRU 策略，替换其中最久未被访问的那个。</p>
+<h3 id="3-最不经常使用算法-Least-Frequently-Used-LFU"><a href="#3-最不经常使用算法-Least-Frequently-Used-LFU" class="headerlink" title="3. 最不经常使用算法 (Least Frequently Used, LFU)"></a>3. 最不经常使用算法 (Least Frequently Used, LFU)</h3><h4 id="算法讲解-2"><a href="#算法讲解-2" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LFU 算法的核心思想是“<strong>如果一个数据在过去一段时间内被访问的次数很少，那么它在将来被访问的可能性也很小</strong>”。因此，当需要替换时，LFU 会选择被访问次数最少的数据块进行替换。如果存在多个访问次数相同的数据块，通常会结合 LRU 策略，替换其中最久未被访问的那个。</p>
 <h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><p>假设 Cache 有 3 个槽位，请求序列为：</p>
 <p>1, 2, 3, 1, 2, 4, 1, 2, 5</p>
 <table>
