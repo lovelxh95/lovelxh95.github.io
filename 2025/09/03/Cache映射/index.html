@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>Cache映射</title>
+<meta name="keywords" content="Cache映射, Morris">
+<meta name="description" content="一、Cache基本概念
+定义：Cache是位于CPU与主存之间的高速缓冲存储器，用于缓解CPU与主存之间的速度差异。
+透明性：对程序员和编译器而言，Cache是透明的，程序员无需关心其存在与否，但理解Cache机制有助于编写高效程序。
+基本">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Cache映射">
+<meta property="og:description" content="一、Cache基本概念
+定义：Cache是位于CPU与主存之间的高速缓冲存储器，用于缓解CPU与主存之间的速度差异。
+透明性：对程序员和编译器而言，Cache是透明的，程序员无需关心其存在与否，但理解Cache机制有助于编写高效程序。
+基本">
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://hadoop.dpdns.org">
+        <img class="avatar" src="/images/img.jpg" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://hadoop.dpdns.org">
+        <h1 class="site-title">Morris</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Cache映射</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-09-03</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+              计算机组成原理
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="一、Cache基本概念"><a href="#一、Cache基本概念" class="headerlink" title="一、Cache基本概念"></a>一、Cache基本概念</h2><ul>
+<li><strong>定义</strong>：Cache是位于CPU与主存之间的高速缓冲存储器，用于缓解CPU与主存之间的速度差异。</li>
+<li><strong>透明性</strong>：对程序员和编译器而言，Cache是透明的，程序员无需关心其存在与否，但理解Cache机制有助于编写高效程序。</li>
+<li><strong>基本术语</strong>：<ul>
+<li><strong>主存块（Block）</strong>：主存被划分为大小相等的块。</li>
+<li><strong>Cache行（Line）或槽（Slot）</strong>：Cache被划分为与主存块大小相同的行或槽。</li>
+<li><strong>命中（Hit）</strong>：CPU访问的数据在Cache中。</li>
+<li><strong>缺失（Miss）</strong>：CPU访问的数据不在Cache中，需从主存调入。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、Cache映射方式（Cache-Mapping）"><a href="#二、Cache映射方式（Cache-Mapping）" class="headerlink" title="二、Cache映射方式（Cache Mapping）"></a>二、Cache映射方式（Cache Mapping）</h2><p>Cache映射方式决定了主存块如何映射到Cache行中，主要有三种方式：</p>
+<table>
+<thead>
+<tr>
+<th>映射方式</th>
+<th>特点</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>直接映射（Direct Mapped）</strong></td>
+<td>每个主存块映射到Cache中固定的行</td>
+<td>实现简单、命中时间短、无需考虑替换策略</td>
+<td>不够灵活，易产生冲突缺失，Cache空间利用率低</td>
+</tr>
+<tr>
+<td><strong>全相联映射（Fully Associative）</strong></td>
+<td>每个主存块可映射到Cache任意行</td>
+<td>灵活，冲突缺失为0，命中率高</td>
+<td>实现复杂，需大量比较器，成本高，速度慢</td>
+</tr>
+<tr>
+<td><strong>组相联映射（Set Associative）</strong></td>
+<td>每组主存块映射到Cache固定组的任意行（组间模映射、组内全映射）</td>
+<td>综合直接映射和全相联映射优点，兼顾灵活性与实现成本</td>
+<td>实现较复杂，需一定数量比较器</td>
+</tr>
+</tbody></table>
+<h2 id="三、Cache地址划分与组织结构"><a href="#三、Cache地址划分与组织结构" class="headerlink" title="三、Cache地址划分与组织结构"></a>三、Cache地址划分与组织结构</h2><ul>
+<li><strong>地址划分</strong>：<ul>
+<li><strong>标记（Tag）</strong>：用于标识主存块。</li>
+<li><strong>索引（Index）</strong>：用于定位Cache行或组。</li>
+<li><strong>字节偏移（Byte Offset）</strong>：用于定位块内具体字节。</li>
+</ul>
+</li>
+<li><strong>有效位（Valid Bit）</strong>：<ul>
+<li>标记Cache行数据是否有效（1有效，0无效或初始状态）。</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%80%E3%80%81Cache%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="top-box-text">一、Cache基本概念</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%8C%E3%80%81Cache%E6%98%A0%E5%B0%84%E6%96%B9%E5%BC%8F%EF%BC%88Cache-Mapping%EF%BC%89"><span class="top-box-text">二、Cache映射方式（Cache Mapping）</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%89%E3%80%81Cache%E5%9C%B0%E5%9D%80%E5%88%92%E5%88%86%E4%B8%8E%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84"><span class="top-box-text">三、Cache地址划分与组织结构</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/">
+          <h3 class="post-title">
+            
+            下一篇：Cache块有效性
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+    <div id="gitalk-container"></div>
+
+
+
+    <link rel="stylesheet" href="/style/gitalk.min.css"/>
+    <script src="/js/gitalk.min.js"></script>
+    <script>
+        const config = {"clientId":"Ov23liVGmP9dlXycyD2g","clientSecret":"fa53a45fc9db8564659c965e36e77195dae1a5a2","repository":"comment","owner":"lovelxh95","admin":"lovelxh95","createIssueManually":true};
+        const gitalk = new Gitalk({
+            clientID: config.clientId,
+            clientSecret: config.clientSecret,
+            repo: config.repository,
+            owner: config.owner,
+            admin: [config.owner],
+            id: location.pathname.slice(1, location.pathname.lastIndexOf('/')).substring(0, 49),       // Ensure uniqueness and length less than 50
+            distractionFreeMode: false,  // Facebook-like distraction free mode
+            createIssueManually: config.createIssueManually ? true : false
+        });
+
+        gitalk.render('gitalk-container')
+
+    </script>
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/lovelxh95" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"lazyload_placeholder":null,"photo_zoom":"simple-lightbox"},"search":{"enable":false,"type":"algolia","placeholder":"输入关键词搜索...","algolia":{"appID":"","apiKey":"","indexName":""}},"language":"cn"}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+    <script async src="https://hm.baidu.com/hm.js?e73b995e5200578b96d1fe27c8272c05"></script>
+
+
+
+
+  </body>
+</html>
+

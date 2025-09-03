@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Cache映射</title>
+      <link href="/2025/09/03/Cache%E6%98%A0%E5%B0%84/"/>
+      <url>/2025/09/03/Cache%E6%98%A0%E5%B0%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、Cache基本概念"><a href="#一、Cache基本概念" class="headerlink" title="一、Cache基本概念"></a>一、Cache基本概念</h2><ul><li><strong>定义</strong>：Cache是位于CPU与主存之间的高速缓冲存储器，用于缓解CPU与主存之间的速度差异。</li><li><strong>透明性</strong>：对程序员和编译器而言，Cache是透明的，程序员无需关心其存在与否，但理解Cache机制有助于编写高效程序。</li><li><strong>基本术语</strong>：<ul><li><strong>主存块（Block）</strong>：主存被划分为大小相等的块。</li><li><strong>Cache行（Line）或槽（Slot）</strong>：Cache被划分为与主存块大小相同的行或槽。</li><li><strong>命中（Hit）</strong>：CPU访问的数据在Cache中。</li><li><strong>缺失（Miss）</strong>：CPU访问的数据不在Cache中，需从主存调入。</li></ul></li></ul><h2 id="二、Cache映射方式（Cache-Mapping）"><a href="#二、Cache映射方式（Cache-Mapping）" class="headerlink" title="二、Cache映射方式（Cache Mapping）"></a>二、Cache映射方式（Cache Mapping）</h2><p>Cache映射方式决定了主存块如何映射到Cache行中，主要有三种方式：</p><table><thead><tr><th>映射方式</th><th>特点</th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td><strong>直接映射（Direct Mapped）</strong></td><td>每个主存块映射到Cache中固定的行</td><td>实现简单、命中时间短、无需考虑替换策略</td><td>不够灵活，易产生冲突缺失，Cache空间利用率低</td></tr><tr><td><strong>全相联映射（Fully Associative）</strong></td><td>每个主存块可映射到Cache任意行</td><td>灵活，冲突缺失为0，命中率高</td><td>实现复杂，需大量比较器，成本高，速度慢</td></tr><tr><td><strong>组相联映射（Set Associative）</strong></td><td>每组主存块映射到Cache固定组的任意行（组间模映射、组内全映射）</td><td>综合直接映射和全相联映射优点，兼顾灵活性与实现成本</td><td>实现较复杂，需一定数量比较器</td></tr></tbody></table><h2 id="三、Cache地址划分与组织结构"><a href="#三、Cache地址划分与组织结构" class="headerlink" title="三、Cache地址划分与组织结构"></a>三、Cache地址划分与组织结构</h2><ul><li><strong>地址划分</strong>：<ul><li><strong>标记（Tag）</strong>：用于标识主存块。</li><li><strong>索引（Index）</strong>：用于定位Cache行或组。</li><li><strong>字节偏移（Byte Offset）</strong>：用于定位块内具体字节。</li></ul></li><li><strong>有效位（Valid Bit）</strong>：<ul><li>标记Cache行数据是否有效（1有效，0无效或初始状态）。</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cache块有效性</title>
       <link href="/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/"/>
       <url>/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</url>

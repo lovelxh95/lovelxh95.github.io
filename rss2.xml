@@ -9,8 +9,35 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 03 Sep 2025 13:36:21 GMT</pubDate>
+    <pubDate>Wed, 03 Sep 2025 13:57:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Cache映射</title>
+      <link>https://hadoop.dpdns.org/2025/09/03/Cache%E6%98%A0%E5%B0%84/</link>
+      <guid>https://hadoop.dpdns.org/2025/09/03/Cache%E6%98%A0%E5%B0%84/</guid>
+      <pubDate>Wed, 03 Sep 2025 13:44:47 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;一、Cache基本概念&quot;&gt;&lt;a href=&quot;#一、Cache基本概念&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hadoop.dpdns.org/categories/408/">408</category>
+      
+      
+      <category domain="https://hadoop.dpdns.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</category>
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/09/03/Cache%E6%98%A0%E5%B0%84/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Cache块有效性</title>
