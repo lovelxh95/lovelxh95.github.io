@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Cache替换算法</title>
+      <link href="/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/"/>
+      <url>/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="替换算法汇总"><a href="#替换算法汇总" class="headerlink" title="替换算法汇总"></a>替换算法汇总</h3><table><thead><tr><th>算法</th><th>英文全称</th><th>原理</th><th>优点</th><th>缺点</th><th>适用场景</th></tr></thead><tbody><tr><td><strong>随机算法</strong></td><td>Random Replacement</td><td>随机选择一个 Cache 块替换</td><td>实现简单，硬件开销小</td><td>未考虑访问模式，命中率低</td><td>对性能要求不高，硬件资源有限的场景</td></tr><tr><td><strong>先进先出算法</strong></td><td>FIFO（First In First Out）</td><td>替换最早进入 Cache 的块</td><td>实现简单，硬件开销小</td><td>未考虑数据访问频率，可能替换热点数据</td><td>嵌入式系统、简单处理器</td></tr><tr><td><strong>最近最少使用算法</strong></td><td>LRU（Least Recently Used）</td><td>替换最近最久未使用的块</td><td>较好地利用时间局部性，命中率高</td><td>实现较复杂，需要额外硬件支持</td><td>通用处理器、对性能要求高的场景</td></tr><tr><td><strong>最不经常使用算法</strong></td><td>LFU（Least Frequently Used）</td><td>替换访问次数最少的块</td><td>适合访问频率差异大的场景</td><td>对访问模式变化不敏感，实现复杂</td><td>特定应用场景，如数据库缓存</td></tr></tbody></table><h3 id="为什么需要-Cache-替换算法？"><a href="#为什么需要-Cache-替换算法？" class="headerlink" title="为什么需要 Cache 替换算法？"></a>为什么需要 Cache 替换算法？</h3><p><strong>Cache（高速缓存）<strong>是一种容量小但速度极快的存储器，位于 CPU 和主内存之间。它的作用是存放主内存中最常被访问的数据的一个副本。当 CPU 需要数据时，它首先检查 Cache。如果数据在 Cache 中（称为</strong>命中, Hit</strong>），CPU 就可以快速获取；如果不在（称为<strong>未命中, Miss</strong>），CPU 就需要从慢速的主内存中读取数据，并将其加载到 Cache 中。</p><p>由于 Cache 的容量远小于主内存，它很快就会被填满。当 Cache 已满，且 CPU 需要加载新的数据时，就必须选择一个已有的数据块（Cache Line）将其丢弃，以便为新数据腾出空间。<strong>Cache 替换算法</strong>就是用来决定“应该丢弃哪个数据块”的策略。一个好的替换算法能够尽可能保留未来最可能被用到的数据，从而提高 Cache 的命中率，提升系统整体性能。</p><h3 id="1-先进先出算法-First-In-First-Out-FIFO"><a href="#1-先进先出算法-First-In-First-Out-FIFO" class="headerlink" title="1. 先进先出算法 (First-In, First-Out, FIFO)"></a>1. 先进先出算法 (First-In, First-Out, FIFO)</h3><h4 id="算法讲解"><a href="#算法讲解" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>FIFO 是最简单的替换算法。它将 Cache 中的数据块视为一个队列。当需要替换时，它会选择<strong>最早进入 Cache 的数据块</strong>进行替换，无论这个数据块最近是否被访问过。</p><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>假设我们的 Cache 有 3 个槽位（Cache Size &#x3D; 3），我们依次请求以下页面序列：</p><p>7, 0, 1, 2, 0, 3, 0, 4</p><table><thead><tr><th>请求页面</th><th>Cache 状态 (从老到新)</th><th>操作</th></tr></thead><tbody><tr><td><strong>7</strong></td><td><code>[7]</code></td><td>Miss, 7 进入</td></tr><tr><td><strong>0</strong></td><td><code>[7, 0]</code></td><td>Miss, 0 进入</td></tr><tr><td><strong>1</strong></td><td><code>[7, 0, 1]</code></td><td>Miss, 1 进入 (Cache 已满)</td></tr><tr><td><strong>2</strong></td><td><code>[0, 1, 2]</code></td><td>Miss, 替换最早进入的<strong>7</strong></td></tr><tr><td><strong>0</strong></td><td><code>[0, 1, 2]</code></td><td><strong>Hit</strong></td></tr><tr><td><strong>3</strong></td><td><code>[1, 2, 3]</code></td><td>Miss, 替换最早进入的<strong>0</strong></td></tr><tr><td><strong>0</strong></td><td><code>[2, 3, 0]</code></td><td>Miss, 替换最早进入的<strong>1</strong></td></tr><tr><td><strong>4</strong></td><td><code>[3, 0, 4]</code></td><td>Miss, 替换最早进入的<strong>2</strong></td></tr></tbody></table><p>在这个例子中，总共发生了 7 次 Miss 和 1 次 Hit。</p><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul><li><strong>实现简单</strong>：只需要一个简单的队列结构即可实现，算法开销非常小。</li><li><strong>理解容易</strong>：逻辑清晰，易于理解和调试。</li></ul><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul><li><strong>性能不佳</strong>：完全不考虑数据的访问模式。一个经常被访问的热点数据，可能会因为进入 Cache 的时间比较早而被无情地替换出去，导致命中率低下。</li><li><strong>存在 Belady 异常</strong>：在某些情况下，增加 Cache 的容量反而可能导致命中率下降。这是 FIFO 算法一个著名的缺陷。</li></ul><hr><h3 id="2-最近最少使用算法-Least-Recently-Used-LRU"><a href="#2-最近最少使用算法-Least-Recently-Used-LRU" class="headerlink" title="2. 最近最少使用算法 (Least Recently Used, LRU)"></a>2. 最近最少使用算法 (Least Recently Used, LRU)</h3><h4 id="算法讲解-1"><a href="#算法讲解-1" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LRU 算法的核心思想是“如果一个数据在最近一段时间没有被访问到，那么它在将来被访问的可能性也很小”。因此，当需要替换时，LRU 会选择最长时间没有被访问过的数据块进行替换。这个算法基于“时间局部性”原理，即最近被访问的数据很可能在不久的将来再次被访问。</p><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>同样，Cache 有 3 个槽位，请求序列为：</p><p>7, 0, 1, 2, 0, 3, 0, 4</p><table><thead><tr><th>请求页面</th><th>Cache 状态 (从最少使用到最近使用)</th><th>操作</th></tr></thead><tbody><tr><td><strong>7</strong></td><td><code>[7]</code></td><td>Miss, 7 进入</td></tr><tr><td><strong>0</strong></td><td><code>[7, 0]</code></td><td>Miss, 0 进入</td></tr><tr><td><strong>1</strong></td><td><code>[7, 0, 1]</code></td><td>Miss, 1 进入 (Cache 已满)</td></tr><tr><td><strong>2</strong></td><td><code>[0, 1, 2]</code></td><td>Miss, 替换最久未使用的<strong>7</strong></td></tr><tr><td><strong>0</strong></td><td><code>[1, 2, 0]</code></td><td><strong>Hit</strong>, 0 变为最近使用</td></tr><tr><td><strong>3</strong></td><td><code>[2, 0, 3]</code></td><td>Miss, 替换最久未使用的<strong>1</strong></td></tr><tr><td><strong>0</strong></td><td><code>[2, 3, 0]</code></td><td><strong>Hit</strong>, 0 变为最近使用</td></tr><tr><td><strong>4</strong></td><td><code>[3, 0, 4]</code></td><td>Miss, 替换最久未使用的<strong>2</strong></td></tr></tbody></table><p>在这个例子中，总共发生了 6 次 Miss 和 2 次 Hit，性能优于 FIFO。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul><li><strong>性能好</strong>：充分利用了程序访问的“时间局部性”原理，在大多数场景下都有很高的命中率。</li><li><strong>没有 Belady 异常</strong>：增加 Cache 容量总会提高或保持原有的命中率。</li></ul><h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul><li><strong>实现复杂，开销大</strong>：需要跟踪记录每个数据块的访问历史。常见的实现方式是使用一个双向链表和哈希表的组合，每次访问都需要更新链表节点的位置，这在硬件和软件上都有较高的开销。</li></ul><hr><h3 id="3-最不经常使用算法-Least-Frequently-Used-LFU"><a href="#3-最不经常使用算法-Least-Frequently-Used-LFU" class="headerlink" title="3. 最不经常使用算法 (Least Frequently Used, LFU)"></a>3. 最不经常使用算法 (Least Frequently Used, LFU)</h3><h4 id="算法讲解-2"><a href="#算法讲解-2" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LFU 算法的核心思想是“<strong>如果一个数据在过去一段时间内被访问的次数很少，那么它在将来被访问的可能性也很小</strong>”。因此，当需要替换时，LFU 会选择被访问次数最少的数据块进行替换。如果存在多个访问次数相同的数据块，通常会结合 LRU 策略，替换其中最久未被访问的那个。</p><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><p>假设 Cache 有 3 个槽位，请求序列为：</p><p>1, 2, 3, 1, 2, 4, 1, 2, 5</p><table><thead><tr><th>请求页面</th><th>Cache 状态 (页面:访问次数)</th><th>操作</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><code>[(1:1)]</code></td><td>Miss</td></tr><tr><td><strong>2</strong></td><td><code>[(1:1), (2:1)]</code></td><td>Miss</td></tr><tr><td><strong>3</strong></td><td><code>[(1:1), (2:1), (3:1)]</code></td><td>Miss (Cache 已满)</td></tr><tr><td><strong>1</strong></td><td><code>[(1:2), (2:1), (3:1)]</code></td><td><strong>Hit</strong>, 1 的计数增加</td></tr><tr><td><strong>2</strong></td><td><code>[(1:2), (2:2), (3:1)]</code></td><td><strong>Hit</strong>, 2 的计数增加</td></tr><tr><td><strong>4</strong></td><td><code>[(1:2), (2:2), (4:1)]</code></td><td>Miss, 替换访问次数最少的<strong>3</strong></td></tr><tr><td><strong>1</strong></td><td><code>[(1:3), (2:2), (4:1)]</code></td><td><strong>Hit</strong>, 1 的计数增加</td></tr><tr><td><strong>2</strong></td><td><code>[(1:3), (2:3), (4:1)]</code></td><td><strong>Hit</strong>, 2 的计数增加</td></tr><tr><td><strong>5</strong></td><td><code>[(1:3), (2:3), (5:1)]</code></td><td>Miss, 替换访问次数最少的<strong>4</strong></td></tr></tbody></table><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul><li><strong>考虑了访问频率</strong>：对于那些具有稳定访问模式、某些数据被长期频繁访问的场景，LFU 的效果可能优于 LRU。</li></ul><h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul><li><strong>实现更复杂</strong>：不仅要记录访问历史，还要维护每个数据块的访问计数值，通常需要使用堆或优先队列等数据结构，开销比 LRU 更大。</li><li><strong>无法适应访问模式的变化</strong>：一个曾经被高频访问但现在不再需要的数据，可能会因为其高计数值而长时间“污染”Cache，无法被及时替换出去。</li><li><strong>新加入的数据块容易被淘汰</strong>：一个新数据刚进入 Cache 时，其访问次数为 1，很容易在下一次替换中被立即淘汰，导致没有机会“成长”为热点数据。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Cache映射</title>
+      <link href="/2025/09/03/Cache%E6%98%A0%E5%B0%84/"/>
+      <url>/2025/09/03/Cache%E6%98%A0%E5%B0%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、Cache基本概念"><a href="#一、Cache基本概念" class="headerlink" title="一、Cache基本概念"></a>一、Cache基本概念</h2><ul><li><strong>定义</strong>：Cache是位于CPU与主存之间的高速缓冲存储器，用于缓解CPU与主存之间的速度差异。</li><li><strong>透明性</strong>：对程序员和编译器而言，Cache是透明的，程序员无需关心其存在与否，但理解Cache机制有助于编写高效程序。</li><li><strong>基本术语</strong>：<ul><li><strong>主存块（Block）</strong>：主存被划分为大小相等的块。</li><li><strong>Cache行（Line）或槽（Slot）</strong>：Cache被划分为与主存块大小相同的行或槽。</li><li><strong>命中（Hit）</strong>：CPU访问的数据在Cache中。</li><li><strong>缺失（Miss）</strong>：CPU访问的数据不在Cache中，需从主存调入。</li></ul></li></ul><h2 id="二、Cache映射方式（Cache-Mapping）"><a href="#二、Cache映射方式（Cache-Mapping）" class="headerlink" title="二、Cache映射方式（Cache Mapping）"></a>二、Cache映射方式（Cache Mapping）</h2><p>Cache映射方式决定了主存块如何映射到Cache行中，主要有三种方式：</p><table><thead><tr><th>映射方式</th><th>特点</th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td><strong>直接映射（Direct Mapped）</strong></td><td>每个主存块映射到Cache中固定的行</td><td>实现简单、命中时间短、无需考虑替换策略</td><td>不够灵活，易产生冲突缺失，Cache空间利用率低</td></tr><tr><td><strong>全相联映射（Fully Associative）</strong></td><td>每个主存块可映射到Cache任意行</td><td>灵活，冲突缺失为0，命中率高</td><td>实现复杂，需大量比较器，成本高，速度慢</td></tr><tr><td><strong>组相联映射（Set Associative）</strong></td><td>每组主存块映射到Cache固定组的任意行（组间模映射、组内全映射）</td><td>综合直接映射和全相联映射优点，兼顾灵活性与实现成本</td><td>实现较复杂，需一定数量比较器</td></tr></tbody></table><h2 id="三、Cache地址划分与组织结构"><a href="#三、Cache地址划分与组织结构" class="headerlink" title="三、Cache地址划分与组织结构"></a>三、Cache地址划分与组织结构</h2><ul><li><strong>地址划分</strong>：<ul><li><strong>标记（Tag）</strong>：用于标识主存块。</li><li><strong>索引（Index）</strong>：用于定位Cache行或组。</li><li><strong>字节偏移（Byte Offset）</strong>：用于定位块内具体字节。</li></ul></li><li><strong>有效位（Valid Bit）</strong>：<ul><li>标记Cache行数据是否有效（1有效，0无效或初始状态）。</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Cache块有效性</title>
+      <link href="/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/"/>
+      <url>/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Cache块有效性"><a href="#Cache块有效性" class="headerlink" title="Cache块有效性"></a>Cache块有效性</h2><h3 id="一，什么是Cache的有效性"><a href="#一，什么是Cache的有效性" class="headerlink" title="一，什么是Cache的有效性"></a>一，什么是Cache的有效性</h3><p>在 Cache 结构中，数据是以块（Block 或 Line）为单位存储的。每个 Cache 块通常包含以下几个部分</p><ul><li>数据块：主存中的数据副本</li><li>标记（Tag）：用于标识对于主存地址</li><li>有效位：表示Cache块是否有效</li></ul><h3 id="二，为什么需要-Cache-块有效性"><a href="#二，为什么需要-Cache-块有效性" class="headerlink" title="二，为什么需要 Cache 块有效性"></a>二，为什么需要 Cache 块有效性</h3><p>当计算机刚启动时，Cache 为空，其中的数据是不确定的。此时，如果没有有效位，CPU 可能会误用这些无效数据，导致程序错误。因此，<strong>有效位的作用就是防止访问无效数据</strong>。</p><table><thead><tr><th>有效位</th><th>含义</th></tr></thead><tbody><tr><td>0</td><td>Cache行无效，数据不可用，必须从内存重新加载</td></tr><tr><td>1</td><td>Cache行有效，数据可用，可以直接读取</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>排序算法(C++实现)</title>
+      <link href="/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/"/>
+      <url>/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n-i<span class="number">-1</span>;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                swap(arr[j],arr[j+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">selection_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="type">int</span> min_index = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[min_index])&#123;</span><br><span class="line">                min_index = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr[i],arr[min_index]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">shell_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> gap=n/<span class="number">2</span>;gap&gt;<span class="number">0</span>;gap/=<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=gap;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="type">int</span> temp = arr[i];</span><br><span class="line">            <span class="type">int</span> j;</span><br><span class="line">            <span class="keyword">for</span>(j=i;j&gt;=gap &amp;&amp; arr[j-gap]&gt;temp;j-=gap)&#123;</span><br><span class="line">                arr[j] = arr[j-gap];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertion_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> key = arr[i];</span><br><span class="line">        <span class="type">int</span> j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;key)&#123;</span><br><span class="line">            arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j+<span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">quick_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> low, <span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="type">int</span> pivot = arr[high];</span><br><span class="line">        <span class="type">int</span> i = low - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=low;j&lt;high;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; pivot)&#123;</span><br><span class="line">                i++;</span><br><span class="line">                swap(arr[i],arr[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr[i+<span class="number">1</span>],arr[high]);</span><br><span class="line">        quick_sort(arr, low, i);</span><br><span class="line">        quick_sort(arr, i+<span class="number">2</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> left, <span class="type">int</span> mid, <span class="type">int</span> right)</span>&#123;</span><br><span class="line">    <span class="type">int</span>* temp = new <span class="type">int</span>[right-left+<span class="number">1</span>];</span><br><span class="line">    <span class="type">int</span> i = left, j = mid+<span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= right)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt; arr[j])&#123;</span><br><span class="line">            temp[k++] = arr[i++];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            temp[k++] = arr[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) temp[k++] = arr[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= right) temp[k++] = arr[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=left, k=<span class="number">0</span>;i&lt;=right;i++,k++)&#123;</span><br><span class="line">        arr[i] = temp[k];</span><br><span class="line">    &#125;</span><br><span class="line">    delete[] temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">merge_sort</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> left, <span class="type">int</span> right)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        merge_sort(arr, left, mid);</span><br><span class="line">        merge_sort(arr, mid+<span class="number">1</span>, right);</span><br><span class="line">        merge(arr, left, mid, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="main"><a href="#main" class="headerlink" title="main"></a>main</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="number">100000</span>;</span><br><span class="line">    <span class="type">int</span>* arr = generate_data(n);</span><br><span class="line">    <span class="comment">// 评判每个算法的排序时间</span></span><br><span class="line">    <span class="type">clock_t</span> start, end;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    bubble_sort(arr, n);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Bubble Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    selection_sort(arr, n);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Selection Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    shell_sort(arr, n);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Shell Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    insertion_sort(arr, n);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Insertion Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    quick_sort(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Quick Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    start = clock();</span><br><span class="line">    merge_sort(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Merge Sort Time: &quot;</span> &lt;&lt; (<span class="type">double</span>)(end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; seconds&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    delete[] arr;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a class="simple-lightbox" href="/images/image_1756822813078.png"><img   src="/images/loading.svg" data-src="/images/image_1756822813078.png"  alt="image.png" lazyload></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构与算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JVM 常用命令</title>
+      <link href="/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<ul><li><strong>JPS</strong>：JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。</li><li><strong>jstat</strong>：jstat(JVM statistics Monitoring)是用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据。</li><li><strong>jmap</strong>：jmap(JVM Memory Map)命令用于生成heap dump文件，如果不使用这个命令，还阔以使用-XX:+HeapDumpOnOutOfMemoryError参数来让虚拟机出现OOM的时候自动生成dump文件。 jmap不仅能生成dump文件，还阔以查询finalize执行队列、Java堆和永久代的详细信息，如当前使用率、当前使用的是哪种收集器等。</li><li><strong>jhat</strong>： jhat(JVM Heap Analysis Tool)命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP&#x2F;HTML服务器，生成dump的分析结果后，可以在浏览器中查看。在此要注意，一般不会直接在服务器上进行分析，因为jhat是一个耗时并且耗费硬件资源的过程，一般把服务器生成的dump文件复制到本地或其他机器上进行分析。</li><li><strong>jstack</strong>：jstack用于生成java虚拟机当前时刻的线程快照。jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做什么事情，或者等待什么资源。 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sleep() 和 wait() 有什么区别</title>
+      <link href="/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+      <url>/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<p><strong>sleep方法</strong>：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）</p><p><strong>wait方法</strong>：是Object的方法，必须与synchronized关键字一起使用，线程进入阻塞状态，当notify或者notifyall被调用后，会解除阻塞。但是，只有重新占用互斥锁之后才会进入可运行状态。睡眠时，会释放互斥锁；</p><p><strong>在 Java 中，</strong><code>sleep()</code> 和 <code>wait()</code> 都是用于线程控制的方法，但它们有以下几个关键区别：</p><ol><li><strong>所属类不同</strong></li></ol><ul><li><code>sleep()</code> 是 <code>Thread</code> 类的静态方法</li><li><code>wait()</code> 是 <code>Object</code> 类的实例方法</li></ul><ol start="2"><li><strong>对锁的影响不同</strong></li></ol><ul><li><code>sleep()</code> 不会释放当前线程所持有的锁</li><li><code>wait()</code> 会释放当前线程所持有的锁，让其他线程有机会获取该锁</li></ul><ol start="3"><li><strong>唤醒方式不同</strong></li></ol><ul><li><code>sleep()</code> 时间到后会自动唤醒，或者被 <code>interrupt()</code> 方法中断唤醒</li><li><code>wait()</code> 需要其他线程调用相同对象的 <code>notify()</code> 或 <code>notifyAll()</code> 方法才能唤醒，或者指定等待时间后自动唤醒</li></ul><ol start="4"><li><strong>使用场景不同</strong></li></ol><ul><li><code>sleep()</code> 通常用于暂停线程执行一段固定时间，不依赖于其他线程的状态</li><li><code>wait()</code> 通常用于线程间通信，让线程等待某个条件满足后再继续执行</li></ul><ol start="5"><li><strong>调用要求不同</strong></li></ol><ul><li><code>sleep()</code> 可以在任何地方调用，不需要持有对象锁</li><li><code>wait()</code> 必须在同步代码块（<code>synchronized</code>）中调用，且当前线程必须持有该对象的锁</li></ul><p><strong>示例代码：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sleep() 示例</span></span><br><span class="line">Thread.sleep(<span class="number">1000</span>); <span class="comment">// 让当前线程休眠1秒，不释放锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// wait() 示例</span></span><br><span class="line"><span class="keyword">synchronized</span> (obj) &#123;</span><br><span class="line">    obj.wait(); <span class="comment">// 释放obj对象的锁，进入等待状态</span></span><br><span class="line">    <span class="comment">// 或指定等待时间</span></span><br><span class="line">    obj.wait(<span class="number">1000</span>); <span class="comment">// 最多等待1秒</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>需要注意的是，当 <code>wait()</code> 被唤醒后，线程不会立即执行，而是需要重新获取对象锁后才能继续执行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库三范式的理解与看法</title>
+      <link href="/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/"/>
+      <url>/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>数据库三范式（First Normal Form, 1NF；Second Normal Form, 2NF；Third Normal Form, 3NF）是关系型数据库设计中用于减少数据冗余、避免更新异常（插入、删除、修改异常）的核心原则。其本质是通过对数据表的结构化拆分，确保数据的“原子性”和“依赖合理性”，最终实现数据的一致性和可维护性。</p><h3 id="1-三范式的核心定义与作用"><a href="#1-三范式的核心定义与作用" class="headerlink" title="1. 三范式的核心定义与作用"></a>1. 三范式的核心定义与作用</h3><ul><li><strong>第一范式（1NF）：要求数据表中的每个属性（列）都是“原子性”的，即不可再分。</strong><br>例如，“地址”字段若包含“省、市、区”，需拆分为独立列，否则无法单独查询“某省的用户”，会导致查询效率低且数据混乱。<br>作用：确保数据的最小粒度，为后续的依赖关系规范奠定基础。</li><li><strong>第二范式（2NF）</strong>：在 1NF 的基础上，要求非主属性（非主键列）完全依赖于主键（而非主键的一部分，即“消除部分依赖”）。<br>例如，“学生选课表”中，若主键是（学生 ID，课程 ID），则“学生姓名”仅依赖“学生 ID”（部分依赖），需拆分为“学生表”（存学生 ID、姓名）和“选课表”（存学生 ID、课程 ID、成绩）。<br>作用：避免因主键部分字段变化导致的非主属性冗余（如同一学生选多门课，姓名会重复存储）。</li><li><strong>第三范式（3NF）</strong>：在 2NF 的基础上，要求非主属性之间不存在“传递依赖”（即非主属性不能依赖于其他非主属性）。<br>例如，“学生表”中若有“学生 ID、学院 ID、学院名称”，则“学院名称”依赖于“学院 ID”（传递依赖于主键“学生 ID”），需拆分为“学生表”（学生 ID、学院 ID）和“学院表”（学院 ID、学院名称）。<br>作用：避免因非主属性变化导致的连锁更新（如学院名称修改时，无需更新所有学生的记录）。</li></ul><h3 id="2-三范式的价值与局限性"><a href="#2-三范式的价值与局限性" class="headerlink" title="2. 三范式的价值与局限性"></a>2. 三范式的价值与局限性</h3><ul><li><strong>价值</strong>：<br>三范式是数据库设计的“基准线”，其核心价值在于通过结构化拆分减少冗余，降低数据不一致的风险。对于业务稳定、数据量中等、以“事务性操作”（如订单、用户管理）为主的系统，严格遵循三范式可显著提升数据维护效率（如修改一条学院名称，仅需改学院表，无需动学生表）。</li><li><strong>局限性</strong>:<br>过度规范化可能导致“拆分过度”：表数量激增，查询时需频繁进行多表连接（JOIN），反而降低查询性能（尤其数据量极大时）。例如，电商订单查询需关联“订单表、用户表、商品表、地址表、支付表”等，多表连接会增加数据库 IO 压力。<br>此外，部分场景需“反范式设计”（主动保留冗余）：如数据仓库的报表场景，为提升查询速度，会将多表数据合并为宽表（冗余存储），牺牲部分维护性换取性能。</li></ul><h3 id="3-实际应用中的平衡"><a href="#3-实际应用中的平衡" class="headerlink" title="3. 实际应用中的平衡"></a>3. 实际应用中的平衡</h3><p>三范式并非“绝对准则”，而是需要结合业务场景灵活调整：</p><ul><li>事务型系统（如银行转账）：需严格遵循三范式，优先保证数据一致性；</li><li>分析型系统（如电商数据分析）：可适当反范式，优先保证查询效率；</li><li>折中方案：通过“冗余字段 + 触发器&#x2F;定时任务”维护一致性（如订单表冗余“商品名称”，同时用触发器同步商品表的名称更新）。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
+      <link href="/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/"/>
+      <url>/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<p>在 Java 中，使用 <strong><code>new String(&quot;abc&quot;)</code> 可能创建 <strong>1 个或 2 个对象</strong></strong>，具体取决于字符串常量池（String Pool）中是否已存在 “abc” 这个字符串：</p><ol><li><strong>如果常量池中不存在 “abc”：</strong></li></ol><ul><li><strong>会先在常量池中创建一个 “abc” 对象。</strong></li><li>再通过 <code>new</code> 关键字在堆内存中创建一个新的 String 对象（该对象的值与常量池中的 “abc” 相同）。</li><li><strong>总共创建 <strong><strong>2 个对象</strong></strong>。</strong></li></ul><ol start="2"><li><strong>如果常量池中已存在 “abc”</strong>：</li></ol><ul><li>仅通过 <code>new</code> 关键字在堆内存中创建一个新的 String 对象（该对象的值引用常量池中的 “abc”）。</li><li>总共创建 <strong><strong>1 个对象</strong></strong>。</li></ul><p>这是因为 <code>new String(&quot;abc&quot;)</code>会强制在堆中生成一个新对象，而直接使用字符串字面量（如<code>&quot;abc&quot;</code>）则会优先复用常量池中的已有对象。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL面试题</title>
+      <link href="/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <url>/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="MyISAM和InnoDB的区别有哪些"><a href="#MyISAM和InnoDB的区别有哪些" class="headerlink" title="MyISAM和InnoDB的区别有哪些"></a>MyISAM和InnoDB的区别有哪些</h3><ul><li>InnoDB支持事务, MyISAM不支持</li><li>InnoDB支持行级锁, MyISAM支持表级锁</li><li>InnoDB支持多版本并发控制(MVVC), MyISAM不支持</li><li>InnoDB支持外键, MyISAM不支持</li><li>MyISAM支持全文索引, InnoDB部分版本不支持(但可以使用Sphinx插件)</li></ul><h3 id="MySQL怎么恢复半个月前的数据"><a href="#MySQL怎么恢复半个月前的数据" class="headerlink" title="MySQL怎么恢复半个月前的数据"></a>MySQL怎么恢复半个月前的数据</h3><p>通过整库备份+binlog进行恢复. 前提是要有定期整库备份且保存了binlog日志</p><h3 id="MySQL事务的隔离级别-分别有什么特点"><a href="#MySQL事务的隔离级别-分别有什么特点" class="headerlink" title="MySQL事务的隔离级别, 分别有什么特点"></a>MySQL事务的隔离级别, 分别有什么特点</h3><ul><li>读未提交(RU): 一个事务还没提交时, 它做的变更就能被别的事务看到</li><li>读提交(RC): 一个事务提交之后, 它做的变更才会被其他事务看到</li><li>可重复读(RR): 一个事务执行过程中看到的数据, 总是跟这个事务在启动时看到的数据是一致的. 当</li></ul><p>然在可重复读隔离级别下, 未提交变更对其他事务也是不可见的</p><ul><li>串行化(S): 对于同一行记录, 读写都会加锁. 当出现读写锁冲突的时候, 后访问的事务必须等前一个</li></ul><p>事务执行完成才能继续执行</p><h3 id="MySQL中有哪几种锁"><a href="#MySQL中有哪几种锁" class="headerlink" title="MySQL中有哪几种锁"></a>MySQL中有哪几种锁</h3><ul><li>表级锁： 开销小， 加锁快； 不会出现死锁； 锁定粒度大， 发生锁冲突的概率最高， 并发度最低。</li><li>行级锁： 开销大， 加锁慢； 会出现死锁； 锁定粒度最小， 发生锁冲突的概率最低， 并发度也最</li></ul><p><strong>高。</strong></p><ul><li>页面锁： 开销和加锁时间界于表锁和行锁之间； 会出现死锁； 锁定粒度界于表锁和行锁之间， 并</li></ul><p><strong>发度一般。</strong></p><h3 id="MySQL-中有哪些不同的表格"><a href="#MySQL-中有哪些不同的表格" class="headerlink" title="MySQL 中有哪些不同的表格"></a>MySQL 中有哪些不同的表格</h3><p>共有 5 种类型的表格： 1、MyISAM2、Heap 3、Merge 4、INNODB 5、MISAM</p><h3 id="MySQL-中InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？"><a href="#MySQL-中InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？" class="headerlink" title="MySQL 中InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？"></a>MySQL 中InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？</h3><ul><li>read uncommited ： 读到未提交数据</li><li>read committed： 脏读， 不可重复读</li><li>repeatable read： 可重读</li><li>serializable ： 串行事物</li></ul><h3 id="CHAR-和VARCHAR-的区别"><a href="#CHAR-和VARCHAR-的区别" class="headerlink" title="CHAR 和VARCHAR 的区别"></a>CHAR 和VARCHAR 的区别</h3><ul><li><strong>char</strong>：定长，存取效率高，一般用于固定长度的表单提交数据存储，例如：身份证号，手机号，电话，密码等，长度不够的时候，会采取右补空格的方式。</li><li><strong>varchar</strong>：不定长，更节省空间，需要用一个或者两个字节来存储数据的长度。具体规则是：如果列的最大长度小于或等于255字节，则只使用1个字节表示，否则使用2个字节。</li></ul><h3 id="SQL语句主要分为哪几类"><a href="#SQL语句主要分为哪几类" class="headerlink" title="SQL语句主要分为哪几类"></a>SQL语句主要分为哪几类</h3><ul><li><strong>数据定义语言DDL</strong>（Data Ddefinition Language）CREATE，DROP，ALTER，主要为以上操作即对逻辑结构等有操作的，其中包括表结构，视图和索引。</li><li><strong>数据查询语言DQL</strong>（Data Query Language）SELECT，这个较为好理解，即查询操作，以select关键字，各种简单查询，连接查询等，都属于DQL。</li><li><strong>数据操纵语言DML</strong>（Data Manipulation Language）INSERT，UPDATE，DELETE 主要为以上操作，即对数据进行操作的，DQL与DML共同构建了常用的增删改查操作。</li><li><strong>数据控制功能DCL</strong>（Data Control Language）GRANT，REVOKE，COMMIT，ROLLBACK主要为以上操作即对数据库安全性完整性等有操作的，可以简单的理解为权限控制等。</li></ul><h3 id="SQL-约束有哪些"><a href="#SQL-约束有哪些" class="headerlink" title="SQL 约束有哪些"></a>SQL 约束有哪些</h3><ul><li><strong>NOT NULL</strong>: 用于控制字段的内容一定不能为空（NULL）。</li><li><strong>UNIQUE</strong>: 控件字段内容不能重复，一个表允许有多个 Unique 约束。</li><li><strong>PRIMARY KEY</strong>: 也是用于控件字段内容不能重复，但它在一个表只允许出现一个。</li><li><strong>FOREIGN KEY</strong>: 用于预防破坏表之间连接的动作，也能防止非法数据插入外键列，因为它必须是它指向的那个表中的值之一。</li></ul><h3 id="主键和外键"><a href="#主键和外键" class="headerlink" title="主键和外键"></a>主键和外键</h3><ul><li><strong>主键</strong>：表中经常有一个列或多列的组合，其值能唯一地标识表中的每一行，这样的一列或多列称为表的主键，通过它可强制表的实体完整性。一个表只能有一个 PRIMARY KEY 约束，而且 PRIMARY KEY 约束中的列不能接受空值。</li><li><strong>外键</strong>：在一个表中存在的另一个表的主键称此表的外键。</li></ul><h3 id="in和exists的区别"><a href="#in和exists的区别" class="headerlink" title="in和exists的区别"></a>in和exists的区别</h3><p><strong>在 MySQL 中，IN 关键字用于在一个字段中匹配多个值</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column from table where column in (n1, n2, ...)</span><br></pre></td></tr></table></figure><p><strong>EXISTS 关键字用于检查子查询的结果是否为空</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column1, column2 from table_1 where exists (select * from table2 where xxx=xxx)</span><br></pre></td></tr></table></figure><p><strong>如果查询的两个表大小相当，那么用in和exists差别不大。如果两个表中一个较小，一个是大表，则子查询表大的用exists，子查询表小的用in。</strong></p><h3 id="drop-delete-truncate的区别"><a href="#drop-delete-truncate的区别" class="headerlink" title="drop delete truncate的区别"></a>drop delete truncate的区别</h3><table><thead><tr><th></th><th><strong>Delete</strong></th><th><strong>Truncate</strong></th><th><strong>Drop</strong></th></tr></thead><tbody><tr><td><strong>类型</strong></td><td><strong>属于DML</strong></td><td><strong>属于DDL</strong></td><td><strong>属于DDL</strong></td></tr><tr><td><strong>回滚</strong></td><td><strong>可回滚</strong></td><td><strong>不可回滚</strong></td><td><strong>不可回滚</strong></td></tr><tr><td><strong>删除内容</strong></td><td><strong>表结构还在，删除表的全部或者一部分数据行</strong></td><td><strong>表结构还在，删除表中的所有数据</strong></td><td><strong>从数据库中删除表，所有的数据行，索引和权限也会被删除</strong></td></tr><tr><td><strong>删除速度</strong></td><td><strong>删除速度慢，需要逐行删除</strong></td><td><strong>删除速度快</strong></td><td><strong>删除速度最快</strong></td></tr></tbody></table><h3 id="replace-into-和-insert-on-duplicate-key-update的区别"><a href="#replace-into-和-insert-on-duplicate-key-update的区别" class="headerlink" title="replace into 和 insert on duplicate key update的区别"></a>replace into 和 insert on duplicate key update的区别</h3><ul><li><code>replace into</code>和<code>on duplcate key update</code>都是只有在<code>primary key</code>或者<code>unique key</code>冲突的时候才会执行“更新操作”。</li><li><code>replace into</code> 会将已有的数据删除然后重新插入，这样就会有一种情况，如果某些字段有默认值，但是<code>replace into</code>语句的字段不完整，则会设置成默认值，主键id会变更。</li><li><code>on duplicate key update</code>则是执行<code>update</code>后面的语句</li></ul><h3 id="UNION-ALL与UNION的区别"><a href="#UNION-ALL与UNION的区别" class="headerlink" title="UNION ALL与UNION的区别"></a>UNION ALL与UNION的区别</h3><ul><li><strong>返回结果</strong></li></ul><p><strong>union all是直接连接，取到得是所有值，记录可能有重复；</strong></p><p><strong>union 是取唯一值，记录没有重复。</strong></p><ul><li><strong>排序</strong></li></ul><p><strong>union将会按照字段的顺序进行全量排序；</strong></p><p><strong>union all只是简单的将两个结果合并后就返回。</strong></p><ul><li><strong>效率</strong></li></ul><p>从效率上说，union all 要比union快很多，所以，如果可以确认合并的两个结果集中不包含重复数据且不需要排序时的话，那么就使用union all。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
