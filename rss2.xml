@@ -9,8 +9,36 @@
     <atom:link href="https://hadoop.dpdns.org/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 17 Nov 2025 02:58:37 GMT</pubDate>
+    <pubDate>Mon, 15 Dec 2025 09:27:07 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>kmp算法实现</title>
+      <link>https://hadoop.dpdns.org/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</link>
+      <guid>https://hadoop.dpdns.org/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
+      <pubDate>Mon, 15 Dec 2025 09:24:31 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;下面是kmp算法的具体实现&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hadoop.dpdns.org/categories/408/">408</category>
+      
+      
+      <category domain="https://hadoop.dpdns.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
+      
+      
+      <comments>https://hadoop.dpdns.org/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>树的性质</title>
