@@ -1,146 +1,122 @@
-// mobile menu
-function registerMobileMenu() {
-  $("#open-menu").click(function () {
-    // set height auto
-    $("#menu-panel").css("height", "auto");
-    // set translate y 0
-    $("#menu-content").css(
-      "transform",
-      "translate(0, 0) rotate(0) skew(0) scaleX(1) scaleY(1)"
-    );
-    $("#open-menu").css("display", "none");
-    $("#close-menu").css("display", "block");
-  });
+$(function() {
+    var isPhone = $(window).width() < 768;
 
-  $("#close-menu").click(function () {
-    // set height 0
-    $("#menu-panel").css("height", "0");
-    // set translate y -100%
-    $("#menu-content").css(
-      "transform",
-      "translate(0, -100%) rotate(0) skew(0) scaleX(1) scaleY(1)"
-    );
-    $("#open-menu").css("display", "block");
-    $("#close-menu").css("display", "none");
-  });
-}
+    init();
 
-// header page title
-function registerHeaderPageTitle() {
-  // 监听文章标题消失时，在header中显示文章标题
-  new IntersectionObserver((entries) => {
-    if (entries[0].intersectionRatio <= 0) {
-      $("#header-title")
-        .css("opacity", "1")
-        .css("transform", "translate(0, 0)")
-        .css("transition", "all 0.3s");
-    } else {
-      $("#header-title")
-        .css("opacity", "0")
-        .css("transform", "translate(0, -100%)")
-        .css("transition", "all 0.3s");
+    function init() {
+        // $('.material-preloader').hide();
+        initialNavToggle();
+        setupRipple();
+        slidingBorder();
+        toc();
+
+        $('.post-content img').on('click',function(){
+            window.open($(this).attr('src'));
+        });
     }
-  }).observe($("#article-title")[0], {
-    threshold: 0,
-  });
-}
 
-// go top
-function registerGoTop() {
-  const THRESHOLD = 50;
-  const $top = $('.back-to-top');
-  $(window).scroll(function () {
-    $top.toggleClass('back-to-top-on', window.pageYOffset > THRESHOLD);
-    const scrollTop = $(window).scrollTop();
-    const docHeight = $('#content').height();
-    const winHeight = $(window).height();
-    const contentVisibilityHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - winHeight);
-    const scrollPercent = (scrollTop) / (contentVisibilityHeight);
-    const scrollPercentRounded = Math.round(scrollPercent*100);
-    const scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
-    $('#scrollpercent>span').html(scrollPercentMaxed);
-  });
+    function slidingBorder() {
+        // sliding border
+        var $activeState = $('.nav-indicator', 'nav'),
+            $navParent = $('.menu-wrapper', 'nav'),
+            overNav = false,
+            $hoveredLink,
+            $activeLink = $("ul.menus li.active a"),
+            activeHideTimeout;
+        setActiveLink(true);
+        $('.menu-wrapper ul.menus li').on('mousemove', onLinkHover);
+        $('.menu-wrapper').on('mouseleave', onLinksLeave);
 
-  $top.on('click', function () {
-    $('body').velocity('scroll');
-  });
-}
+        function onLinkHover(e) {
+            if (!isPhone) {
+                $hoveredLink = e.target ? $(e.target) : e;
+                if (!$hoveredLink.is('li')) {
+                    $hoveredLink = $hoveredLink.parent('li');
+                }
+                var left = $hoveredLink.offset().left - $navParent.offset().left,
+                    width = $hoveredLink.width();
+                if (0 != $activeLink.length || overNav) {
+                    $activeState.css({
+                        transform: "translate3d(" + left + "px, 0, 0) scaleX(" + width / 100 + ")"
+                    });
+                } else {
+                    clearTimeout(activeHideTimeout),
+                        $activeState.css({
+                            transform: "translate3d(" + (left + width / 2) + "px, 0, 0) scaleX(0.001)"
+                        });
+                    setTimeout(function() {
+                        $activeState.addClass("animate-indicator").css({
+                            transform: "translate3d(" + left + "px, 0, 0) scaleX(" + width / 100 + ")"
+                        })
+                    }, 10);
+                }
+                overNav = true;
+            }
+        }
 
-// copy code
-function registerCopyCode() {
-  $("figure.highlight").each(function () {
-    const copyIcon = $(
-      "<iconify-icon id='copy-icon' width='18' icon='carbon:copy'></iconify-icon>"
-    );
-    const leftOffset = 25;
-    // left
-    const left = $(this).width() - leftOffset;
-    // set style
-    $(copyIcon).css("position", "absolute");
-    $(copyIcon).css("left", `${left}px`);
-    $(copyIcon).css("top", "15px");
-    $(copyIcon).css("cursor", "pointer");
-    // add icon
-    $(this).append(copyIcon);
-    // copy code
-    $(copyIcon).click(function () {
-      // .code .line
-      const code = [...$(this).parent().find(".code .line")]
-        .map((line) => line.innerText)
-        .join("\n");
-      // begin copy
-      const textarea = document.createElement("textarea");
-      textarea.value = code;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textarea);
-      var ta = document.createElement("textarea");
-      ta.style.top = window.scrollY + "px"; // Prevent page scrolling
-      ta.style.position = "absolute";
-      ta.style.opacity = "0";
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.append(ta);
-      const selection = document.getSelection();
-      const selected =
-        selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand("copy");
-      // change icon
-      $(this).attr("icon", result ? "carbon:checkmark" : "carbon:error");
-      ta.blur(); // For iOS
-      // blur
-      $(copyIcon).blur();
-      if (selected) {
-        selection.removeAllRanges();
-        selection.addRange(selected);
-      }
-      document.body.removeChild(ta);
-      // setTimeout change icon
-      setTimeout(() => {
-        $(this).attr("icon", "carbon:copy");
-      }, 1000); // 1s
-    });
+        function onLinksLeave(e) {
+            if (!isPhone) {
+                if (0 == $activeLink.length) {
+                    var left = $hoveredLink.offset().left - $navParent.offset().left,
+                        width = $hoveredLink.width();
+                    $activeState.css({
+                        'transform': "translate3d(" + (left + width / 2) + "px, 0, 0) scaleX(0.001)"
+                    });
+                    activeHideTimeout = setTimeout(function() {
+                        $activeState.removeClass("animate-indicator")
+                    }, 200);
+                } else {
+                    onLinkHover($activeLink);
+                }
+                overNav = false;
+            }
+        }
 
-    // listen overflow-x change icon left
-    $(this).scroll(function () {
-      const scrollLeft = $(this).scrollLeft();
-      const iconLeft = $(this).width() - leftOffset + scrollLeft;
-      if (iconLeft > 0) {
-        $(copyIcon).css("left", `${iconLeft}px`);
-      }
-    });
-  });
-}
+        function setActiveLink(load) {
+            if ($activeLink.length > 0) {
+                var left = $activeLink.offset().left - $navParent.offset().left;
+                $activeState.css({
+                    'transform': "translate3d(" + (left + $activeLink.width() / 2) + "px, 0, 0) scaleX(0.001)"
+                });
+                setTimeout(function() {
+                    $activeState.addClass("animate-indicator"),
+                        onLinkHover($activeLink)
+                }, 100);
+            }
+        }
+    }
 
-$(document).ready(function () {
-  registerMobileMenu();
-  registerGoTop();
-  if ($("#article-title").length > 0) {
-    registerHeaderPageTitle();
-    registerCopyCode();
-  }
-});
+    function toc() {
+        if (!isPhone) {
+            //toc
+            $('#toc').html('');
+            $('#toc').tocify({
+                'selectors': 'h2,h3',
+                'extendPage': false,
+                'theme': 'none',
+                'scrollHistory':false
+            });
+        }
+    }
+
+    function initialNavToggle() {
+        //nav icon morphing
+        $('.nav-toggle-icon').click(function() {
+            $('body').toggleClass('nav-active');
+            $(this).toggleClass('active').find('.material-hamburger').toggleClass('opened');
+            $('.menu-wrapper').toggleClass('active');
+            $('.logo').toggleClass('fixed');
+        });
+    }
+
+    function setupRipple() {
+        // ripple click http://fian.my.id/Waves/#start
+        Waves.attach('.wave');
+        Waves.attach('.main.index .post-header.with-cover');
+        Waves.attach('.pagination a');
+        Waves.attach('.pager .pager-item', ['waves-button']);
+        Waves.attach('.btn', ['waves-button']);
+        Waves.init();
+    }
+
+})
