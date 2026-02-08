@@ -1,427 +1,124 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="cn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>books - Morris</title>
+  <title>Morris</title>
+  <link rel="stylesheet" href="/css/style.css">
   
-  <!-- SEO -->
-  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
-  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
-  <meta name="author" content="Morris">
+  <link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
   
-  <!-- Favicon -->
-  
-    <link rel="shortcut icon" href="/images/favicon.ico">
-  
-  
-  <!-- GitHub风格主题切换 -->
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('github-theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      
-      // 设置主题颜色meta标签
-      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
-      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      if (!themeColorMeta) {
-        themeColorMeta = document.createElement('meta');
-        themeColorMeta.name = 'theme-color';
-        document.head.appendChild(themeColorMeta);
-      }
-      themeColorMeta.content = themeColor;
-    })();
-  </script>
-  
-  <!-- Remix Icon 图标库 -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  
-  <!-- 代码高亮 -->
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
-  
-  <style>
-    :root {
-      --card-padding: 24px;
-    }
-  </style>
-
-  <!-- 主题样式 -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-  <!-- 自定义CSS -->
-  
-  
-  <!-- Google Analytics -->
-  
-<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
-<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
-</head>
-
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
-  
-
-<header class="site-header">
-  <div class="header-container">
-    <!-- Logo/站点名称 -->
-    <div class="site-brand">
-      <a href="/" class="brand-link">
-        
-          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
-        
-        <span class="brand-name">Morris</span>
+  <header class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <a href="/" style="color: #fff; text-decoration: none;">
+        <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" style="fill: white; vertical-align: middle; margin-right: 8px;">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        <span>Morris</span>
       </a>
     </div>
-    
-    <!-- 导航菜单 -->
-    <nav class="main-nav">
-      <ul class="nav-list">
-        
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              首页
-            </a>
-          </li>
-        
-          <li class="nav-item">
-            <a href="/archives" class="nav-link">
-              归档
-            </a>
-          </li>
-        
-          <li class="nav-item">
-            <a href="/categories" class="nav-link">
-              分类
-            </a>
-          </li>
-        
-          <li class="nav-item">
-            <a href="/tags" class="nav-link">
-              标签
-            </a>
-          </li>
-        
-          <li class="nav-item">
-            <a href="/about" class="nav-link">
-              关于
-            </a>
-          </li>
-        
-      </ul>
-    </nav>
-    
-    <!-- 右侧功能区 -->
-    <div class="header-actions">
-      <!-- 搜索按钮 -->
-      
-        <button class="search-toggle" aria-label="搜索">
-          <i class="ri-search-line"></i>
-        </button>
-      
-      
-      <!-- 深色模式切换 -->
-      
-        <button class="theme-toggle" aria-label="切换主题">
-          <i class="ri-sun-line" id="themeIcon"></i>
-        </button>
-      
-      
-      <!-- 移动端菜单按钮 -->
-      <button class="mobile-menu-toggle" aria-label="菜单">
-        <i class="ri-menu-line"></i>
-      </button>
-    </div>
-  </div>
-  
-  <!-- 移动端菜单 -->
-  <div class="mobile-menu">
-    <div class="mobile-menu-header">
-      <div class="mobile-brand">
-        
-          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
-        
-        <span class="mobile-name">Morris</span>
-      </div>
-      <button class="mobile-close" aria-label="关闭菜单">
-        <i class="ri-close-line"></i>
-      </button>
-    </div>
-    
-    <nav class="mobile-nav">
-      <ul class="mobile-nav-list">
-        
-          <li class="mobile-nav-item">
-            <a href="/" class="mobile-nav-link">
-              首页
-            </a>
-          </li>
-        
-          <li class="mobile-nav-item">
-            <a href="/archives" class="mobile-nav-link">
-              归档
-            </a>
-          </li>
-        
-          <li class="mobile-nav-item">
-            <a href="/categories" class="mobile-nav-link">
-              分类
-            </a>
-          </li>
-        
-          <li class="mobile-nav-item">
-            <a href="/tags" class="mobile-nav-link">
-              标签
-            </a>
-          </li>
-        
-          <li class="mobile-nav-item">
-            <a href="/about" class="mobile-nav-link">
-              关于
-            </a>
-          </li>
-        
-      </ul>
-    </nav>
-    
-    <div class="mobile-actions">
-      
-        <button class="mobile-theme-toggle" aria-label="切换主题">
-          <i class="ri-sun-line"></i>
-          <span>切换主题</span>
-        </button>
-      
+    <div class="header-nav">
+       <!-- Global Nav if needed -->
     </div>
   </div>
 </header>
-  
-  
 
-  <div class="main-container  ">
-    <main class="main-content">
-      <div class="page-content">
-  <article class="page-article">
-    <header class="page-header">
-      <h1 class="page-title">books</h1>
-    </header>
+  
+  <div class="container">
+    <aside class="sidebar">
+  <div class="profile-info">
+    <img src="/images/avatar.png" alt="Avatar" class="avatar-img">
+    <div class="profile-name">Your Name</div>
+    <div class="profile-bio">A short bio about yourself</div>
     
-    <div class="page-body">
+    <ul class="profile-details">
       
-    </div>
-  </article>
-  
-  
-</div>
-    </main>
-    
-    
-      <aside class="sidebar">
-  <!-- 文章目录：仅在文章页面显示，且排他性显示 -->
-  
-  
-  
-    <!-- 以下内容仅在非文章页面显示 -->
-
-    <!-- 作者信息 -->
-    <div class="widget author-widget">
-      <div class="author-info">
-        
-          <img src="/images/img.jpg" alt="Morris" class="author-avatar">
-        
-        <h3 class="author-name">Morris</h3>
-        
-          <p class="author-description">欢迎来到我的个人博客！这里记录着我的想法、学习和生活。</p>
-        
-      </div>
-    </div>
-    
-    <!-- 最新文章 -->
-    
-      <div class="widget recent-posts-widget">
-        <h3 class="widget-title">Latest Posts</h3>
-        <ul class="recent-posts-list">
-          
-            <li class="recent-post-item">
-              <a href="/2026/01/03/Java%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%EF%BC%881%EF%BC%89/" class="recent-post-link">
-                <span class="recent-post-title">Java开发面试（1）</span>
-                <time class="recent-post-date">01-03</time>
-              </a>
-            </li>
-          
-            <li class="recent-post-item">
-              <a href="/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="recent-post-link">
-                <span class="recent-post-title">AI助手聊天系统项目文档</span>
-                <time class="recent-post-date">12-27</time>
-              </a>
-            </li>
-          
-            <li class="recent-post-item">
-              <a href="/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" class="recent-post-link">
-                <span class="recent-post-title">kmp算法实现</span>
-                <time class="recent-post-date">12-15</time>
-              </a>
-            </li>
-          
-            <li class="recent-post-item">
-              <a href="/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/" class="recent-post-link">
-                <span class="recent-post-title">树的性质</span>
-                <time class="recent-post-date">11-17</time>
-              </a>
-            </li>
-          
-            <li class="recent-post-item">
-              <a href="/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/" class="recent-post-link">
-                <span class="recent-post-title">Cache替换算法</span>
-                <time class="recent-post-date">09-03</time>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
-    
-    
-    <!-- 分类 -->
-    
-      <div class="widget categories-widget">
-        <h3 class="widget-title">Categories</h3>
-        <ul class="categories-list">
-          
-            <li class="category-item">
-              <a href="/categories/408/" class="category-link">
-                408
-                <span class="category-count">6</span>
-              </a>
-            </li>
-          
-            <li class="category-item">
-              <a href="/categories/Java%E9%9D%A2%E8%AF%95/" class="category-link">
-                Java面试
-                <span class="category-count">5</span>
-              </a>
-            </li>
-          
-            <li class="category-item">
-              <a href="/categories/fastapi/" class="category-link">
-                fastapi
-                <span class="category-count">1</span>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
-    
-    
-    <!-- 标签云 -->
-    
-      <div class="widget tags-widget">
-        <h3 class="widget-title">Tags</h3>
-        <div class="tags-cloud">
-          
-            <a href="/tags/Java%E5%9F%BA%E7%A1%80/" class="tag-cloud-item" style="font-size: 92%">
-              Java基础
-            </a>
-          
-            <a href="/tags/MySQL/" class="tag-cloud-item" style="font-size: 88%">
-              MySQL
-            </a>
-          
-            <a href="/tags/python%E5%BC%80%E5%8F%91/" class="tag-cloud-item" style="font-size: 84%">
-              python开发
-            </a>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="tag-cloud-item" style="font-size: 92%">
-              数据结构与算法
-            </a>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-item" style="font-size: 92%">
-              计算机组成原理
-            </a>
-          
-        </div>
-      </div>
-    
-    
-    <!-- 归档 -->
-    
-      <div class="widget archive-widget">
-        <h3 class="widget-title">Archive</h3>
-        <ul class="archive-list">
-          
-            <li class="archive-item">
-              <a href="/archives/2026/" class="archive-link">
-                2026
-                <span class="archive-count">1</span>
-              </a>
-            </li>
-          
-            <li class="archive-item">
-              <a href="/archives/2025/" class="archive-link">
-                2025
-                <span class="archive-count">12</span>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
-    
-  
+      <li>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-location">
+            <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 00-7.072 0 5 5 0 000 7.072L8 14.07l3.536-3.534a5 5 0 000-7.072zM8 2a6 6 0 100 12 6 6 0 000-12z"></path><path fill-rule="evenodd" d="M8 9a2 2 0 100-4 2 2 0 000 4z"></path>
+        </svg>
+        Earth
+      </li>
+      
+      
+      <li>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-mail">
+            <path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.07v7.11c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.14L8 8.75l-6.5-3.61z"></path>
+        </svg>
+        <a href="mailto:email@example.com">email@example.com</a>
+      </li>
+      
+      
+      <li>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-mark-github">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        <a target="_blank" rel="noopener" href="https://github.com/yourname">GitHub</a>
+      </li>
+      
+    </ul>
+  </div>
 </aside>
+
+    
+    <main class="main-content">
+      <div class="tab-nav">
+  <div class="tab-nav-inner">
+    
+      <a class="tab-item " href="/">
+        
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.255 13H.75a.75.75 0 01-.75-.75V1.75zm1.5 0v10.5h3.755c.535 0 1.05.19 1.46.54l.79.79.79-.79a2.25 2.25 0 011.46-.54h3.755V1.75h-3.755a2.25 2.25 0 00-1.748 3.518l-1.353 1.354a.75.75 0 01-1.06 0L3.498 5.268A2.25 2.25 0 001.75 1.75z"></path></svg>
+        
+        <span>Overview</span>
+      </a>
+    
+      <a class="tab-item " href="/archives">
+        
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+        
+        <span>Repositories</span>
+      </a>
+    
+      <a class="tab-item " href="/categories">
+        
+           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project"><path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path></svg>
+        
+        <span>Projects</span>
+      </a>
+    
+      <a class="tab-item " href="/tags">
+        
+        <span>Stars</span>
+      </a>
     
   </div>
+</div>
+
+      <div class="post-content-container" style="border: 1px solid #d0d7de; border-radius: 6px;">
+  <div class="post-header" style="background-color: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: 16px; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+    <h1 style="margin: 0; font-size: 20px; font-weight: 600;">books</h1>
+  </div>
   
-  <footer class="site-footer">
-  <div class="footer-container">
-    <!-- 社交链接 -->
-    
-      <div class="social-links">
-        
-          
-            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
-              <i class="ri-github-line"></i>
-            </a>
-          
-        
-      </div>
-    
-    
-    <!-- 版权信息 -->
-    <div class="copyright">
-      
-        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
-        
+  <div class="post-body" style="padding: 32px;">
+    <div class="post-content">
       
     </div>
-    
+  </div>
+</div>
 
+    </main>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-inner">
+    &copy; 2026 Morris
+    <br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme - <a href="https://github.com/lovelxh95" target="_blank">gtihub_class</a>
   </div>
 </footer>
-  <!-- 主题核心脚本 -->
-<script src="/js/main.js"></script>
-
-<!-- 返回顶部按钮 -->
-
-  <button class="back-to-top" aria-label="返回顶部">
-    <i class="ri-arrow-up-line"></i>
-  </button>
-
-
-<!-- 搜索模态框 -->
-
-  <div class="search-modal" aria-hidden="true">
-    <div class="search-overlay"></div>
-    <div class="search-container">
-      <div class="search-header">
-        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
-        <button class="search-close" aria-label="关闭搜索">
-          <i class="ri-close-line"></i>
-        </button>
-      </div>
-      <div class="search-results"></div>
-    </div>
-  </div>
 
 </body>
 </html>
