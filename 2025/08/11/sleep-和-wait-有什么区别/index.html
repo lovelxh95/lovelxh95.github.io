@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sleep() 和 wait() 有什么区别 - Morris</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
+  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
+  <meta name="author" content="Morris">
+  
+  <!-- Favicon -->
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+  <!-- GitHub风格主题切换 -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('github-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // 设置主题颜色meta标签
+      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeColorMeta) {
+        themeColorMeta = document.createElement('meta');
+        themeColorMeta.name = 'theme-color';
+        document.head.appendChild(themeColorMeta);
+      }
+      themeColorMeta.content = themeColor;
+    })();
+  </script>
+  
+  <!-- Remix Icon 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- 代码高亮 -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/github.css">
+
+  
+  <!-- 自定义CSS -->
+  
+  
+  <!-- Google Analytics -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+
+<body>
+  
+
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo/站点名称 -->
+    <div class="site-brand">
+      <a href="/" class="brand-link">
+        
+          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
+        
+        <span class="brand-name">Morris</span>
+      </a>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              首页
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/archives" class="nav-link">
+              归档
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              分类
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/tags" class="nav-link">
+              标签
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/about" class="nav-link">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="header-actions">
+      <!-- 搜索按钮 -->
+      
+        <button class="search-toggle" aria-label="搜索">
+          <i class="ri-search-line"></i>
+        </button>
+      
+      
+      <!-- 深色模式切换 -->
+      
+        <button class="theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-toggle" aria-label="菜单">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- 移动端菜单 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        
+          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
+        
+        <span class="mobile-name">Morris</span>
+      </div>
+      <button class="mobile-close" aria-label="关闭菜单">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        
+          <li class="mobile-nav-item">
+            <a href="/" class="mobile-nav-link"
+              首页
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/archives" class="mobile-nav-link"
+              归档
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/categories" class="mobile-nav-link"
+              分类
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/tags" class="mobile-nav-link"
+              标签
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/about" class="mobile-nav-link"
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-actions">
+      
+        <button class="mobile-theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line"></i>
+          <span>切换主题</span>
+        </button>
+      
+    </div>
+  </div>
+</header>
+  
+  
+
+  <div class="main-container is-post no-sidebar">
+    <main class="main-content">
+      <div class="post-page">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">sleep() 和 wait() 有什么区别</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="icon-calendar"></i>
+          <time datetime="2025-08-11T05:54:40.000Z">
+            2025-08-11 13:54
+          </time>
+        </div>
+        
+        
+          <div class="meta-item">
+            <i class="icon-folder"></i>
+            <ul class="category-link-list"><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/408/">408</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/fastapi/">fastapi</a></li></ul>
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-file-text"></i>
+            902 words
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-clock"></i>
+            3 min read
+          </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-body">
+      <p><strong>sleep方法</strong>：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）</p>
+<p><strong>wait方法</strong>：是Object的方法，必须与synchronized关键字一起使用，线程进入阻塞状态，当notify或者notifyall被调用后，会解除阻塞。但是，只有重新占用互斥锁之后才会进入可运行状态。睡眠时，会释放互斥锁；</p>
+<p><strong>在 Java 中，</strong><code>sleep()</code> 和 <code>wait()</code> 都是用于线程控制的方法，但它们有以下几个关键区别：</p>
+<ol>
+<li><strong>所属类不同</strong></li>
+</ol>
+<ul>
+<li><code>sleep()</code> 是 <code>Thread</code> 类的静态方法</li>
+<li><code>wait()</code> 是 <code>Object</code> 类的实例方法</li>
+</ul>
+<ol start="2">
+<li><strong>对锁的影响不同</strong></li>
+</ol>
+<ul>
+<li><code>sleep()</code> 不会释放当前线程所持有的锁</li>
+<li><code>wait()</code> 会释放当前线程所持有的锁，让其他线程有机会获取该锁</li>
+</ul>
+<ol start="3">
+<li><strong>唤醒方式不同</strong></li>
+</ol>
+<ul>
+<li><code>sleep()</code> 时间到后会自动唤醒，或者被 <code>interrupt()</code> 方法中断唤醒</li>
+<li><code>wait()</code> 需要其他线程调用相同对象的 <code>notify()</code> 或 <code>notifyAll()</code> 方法才能唤醒，或者指定等待时间后自动唤醒</li>
+</ul>
+<ol start="4">
+<li><strong>使用场景不同</strong></li>
+</ol>
+<ul>
+<li><code>sleep()</code> 通常用于暂停线程执行一段固定时间，不依赖于其他线程的状态</li>
+<li><code>wait()</code> 通常用于线程间通信，让线程等待某个条件满足后再继续执行</li>
+</ul>
+<ol start="5">
+<li><strong>调用要求不同</strong></li>
+</ol>
+<ul>
+<li><code>sleep()</code> 可以在任何地方调用，不需要持有对象锁</li>
+<li><code>wait()</code> 必须在同步代码块（<code>synchronized</code>）中调用，且当前线程必须持有该对象的锁</li>
+</ul>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sleep() 示例</span></span><br><span class="line">Thread.sleep(<span class="number">1000</span>); <span class="comment">// 让当前线程休眠1秒，不释放锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// wait() 示例</span></span><br><span class="line"><span class="keyword">synchronized</span> (obj) &#123;</span><br><span class="line">    obj.wait(); <span class="comment">// 释放obj对象的锁，进入等待状态</span></span><br><span class="line">    <span class="comment">// 或指定等待时间</span></span><br><span class="line">    obj.wait(<span class="number">1000</span>); <span class="comment">// 最多等待1秒</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，当 <code>wait()</code> 被唤醒后，线程不会立即执行，而是需要重新获取对象锁后才能继续执行。</p>
+
+    </div>
+    
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          <i class="icon-tags"></i>
+          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E5%BC%80%E5%8F%91/" rel="tag">python开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li></ul>
+        </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  <!-- 文章导航 -->
+<div class="post-nav">
+  
+    <a href="/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-nav-prev">
+      <span class="nav-label">Previous</span>
+      <span class="nav-title">JVM 常用命令</span>
+    </a>
+  
+  
+  
+    <a href="/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/" class="post-nav-next">
+      <span class="nav-label">Next</span>
+      <span class="nav-title">数据库三范式的理解与看法</span>
+    </a>
+  
+</div>
+</div>
+    </main>
+    
+    
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <!-- 社交链接 -->
+    
+      <div class="social-links">
+        
+          
+            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
+              <i class="ri-github-line"></i>
+            </a>
+          
+        
+      </div>
+    
+    
+    <!-- 版权信息 -->
+    <div class="copyright">
+      
+        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
+        
+      
+    </div>
+    
+
+  </div>
+</footer>
+  <!-- 主题核心脚本 -->
+<script src="/js/main.js"></script>
+
+<!-- 返回顶部按钮 -->
+
+  <button class="back-to-top" aria-label="返回顶部">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+
+<!-- 搜索模态框 -->
+
+  <div class="search-modal" aria-hidden="true">
+    <div class="search-overlay"></div>
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
+        <button class="search-close" aria-label="关闭搜索">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+</body>
+</html>

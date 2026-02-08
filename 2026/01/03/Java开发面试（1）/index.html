@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java开发面试（1） - Morris</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
+  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
+  <meta name="author" content="Morris">
+  
+  <!-- Favicon -->
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+  <!-- GitHub风格主题切换 -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('github-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // 设置主题颜色meta标签
+      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeColorMeta) {
+        themeColorMeta = document.createElement('meta');
+        themeColorMeta.name = 'theme-color';
+        document.head.appendChild(themeColorMeta);
+      }
+      themeColorMeta.content = themeColor;
+    })();
+  </script>
+  
+  <!-- Remix Icon 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- 代码高亮 -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/github.css">
+
+  
+  <!-- 自定义CSS -->
+  
+  
+  <!-- Google Analytics -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+
+<body>
+  
+
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo/站点名称 -->
+    <div class="site-brand">
+      <a href="/" class="brand-link">
+        
+          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
+        
+        <span class="brand-name">Morris</span>
+      </a>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              首页
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/archives" class="nav-link">
+              归档
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              分类
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/tags" class="nav-link">
+              标签
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/about" class="nav-link">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="header-actions">
+      <!-- 搜索按钮 -->
+      
+        <button class="search-toggle" aria-label="搜索">
+          <i class="ri-search-line"></i>
+        </button>
+      
+      
+      <!-- 深色模式切换 -->
+      
+        <button class="theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-toggle" aria-label="菜单">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- 移动端菜单 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        
+          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
+        
+        <span class="mobile-name">Morris</span>
+      </div>
+      <button class="mobile-close" aria-label="关闭菜单">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        
+          <li class="mobile-nav-item">
+            <a href="/" class="mobile-nav-link"
+              首页
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/archives" class="mobile-nav-link"
+              归档
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/categories" class="mobile-nav-link"
+              分类
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/tags" class="mobile-nav-link"
+              标签
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/about" class="mobile-nav-link"
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-actions">
+      
+        <button class="mobile-theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line"></i>
+          <span>切换主题</span>
+        </button>
+      
+    </div>
+  </div>
+</header>
+  
+  
+
+  <div class="main-container is-post ">
+    <main class="main-content">
+      <div class="post-page">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">Java开发面试（1）</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="icon-calendar"></i>
+          <time datetime="2026-01-03T05:30:34.000Z">
+            2026-01-03 13:30
+          </time>
+        </div>
+        
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-file-text"></i>
+            3536 words
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-clock"></i>
+            9 min read
+          </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-body">
+      <h2 id="请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景"><a href="#请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景" class="headerlink" title="请解释 Java 中集合框架的层次结构，并举例说明 ArrayList 和 LinkedList 的区别及其适用场景"></a>请解释 Java 中集合框架的层次结构，并举例说明 ArrayList 和 LinkedList 的区别及其适用场景</h2><h3 id="一、-Java-集合框架的层次结构"><a href="#一、-Java-集合框架的层次结构" class="headerlink" title="一、 Java 集合框架的层次结构"></a>一、 Java 集合框架的层次结构</h3><p>Java 集合框架主要由两大根接口组成：<code>Collection</code> 和 <code>Map</code>。</p>
+<ol>
+<li><strong>Collection 接口</strong>：存储对象的集合。<ul>
+<li><strong>List (有序、可重复)</strong>：<ul>
+<li>ArrayList：基于动态数组实现。</li>
+<li>LinkedList：基于双向链表实现。</li>
+<li>Vector：线程安全（古老，不推荐使用）。</li>
+</ul>
+</li>
+<li><strong>Set (无序、唯一)</strong>：<ul>
+<li>HashSet：基于 HashMap 实现，速度快。</li>
+<li>TreeSet：支持自然排序或定制排序。</li>
+<li>LinkedHashSet：维护插入顺序。</li>
+</ul>
+</li>
+<li><strong>Queue (队列)</strong>：<ul>
+<li>PriorityQueue：优先级队列。</li>
+<li>Deque：双端队列（LinkedList 也实现了该接口）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Map 接口</strong>：存储键值对（Key-Value）。<ul>
+<li>HashMap：最常用，高效。</li>
+<li>TreeMap：按 Key 排序。</li>
+<li>ConcurrentHashMap：线程安全，常用于高并发场景。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="二、-ArrayList-与-LinkedList-的深度对比"><a href="#二、-ArrayList-与-LinkedList-的深度对比" class="headerlink" title="二、 ArrayList 与 LinkedList 的深度对比"></a>二、 ArrayList 与 LinkedList 的深度对比</h3><p>这两者都实现了 List 接口，但在底层数据结构和性能表现上有本质区别：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特性</td>
+<td>ArrayList</td>
+<td>LinkedList</td>
+</tr>
+<tr>
+<td><strong>底层结构</strong></td>
+<td><strong>动态数组</strong>（连续内存空间）</td>
+<td><strong>双向链表</strong>（非连续内存空间）</td>
+</tr>
+<tr>
+<td><strong>随机访问 (get&#x2F;set)</strong></td>
+<td><strong>极快 (<br><br>        <code>O(1)O(1)O(1)</code><br>      <br><br>)</strong>：通过下标直接定位。</td>
+<td><strong>慢 (<br><br>        <code>O(n)O(n)O(n)</code><br>      <br><br>)</strong>：需要从头或尾遍历。</td>
+</tr>
+<tr>
+<td><strong>插入&#x2F;删除 (add&#x2F;remove)</strong></td>
+<td><strong>较慢 (<br><br>        <code>O(n)O(n)O(n)</code><br>      <br><br>)</strong>：涉及数组扩容和元素移动。</td>
+<td><strong>快 (<br><br>        <code>O(1)O(1)O(1)</code><br>      <br><br>)</strong>：仅需修改指针（若已定位到位置）。</td>
+</tr>
+<tr>
+<td><strong>内存占用</strong></td>
+<td>较小：主要浪费在预留的末尾空间。</td>
+<td>较大：每个节点都要存储前驱和后继指针。</td>
+</tr>
+<tr>
+<td><strong>线程安全</strong></td>
+<td>线程不安全</td>
+<td>线程不安全</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="什么是-Volatile-关键字？它在多线程环境中的作用是什么？与-Synchronized-的区别是什么？"><a href="#什么是-Volatile-关键字？它在多线程环境中的作用是什么？与-Synchronized-的区别是什么？" class="headerlink" title="什么是 Volatile 关键字？它在多线程环境中的作用是什么？与 Synchronized 的区别是什么？"></a>什么是 Volatile 关键字？它在多线程环境中的作用是什么？与 Synchronized 的区别是什么？</h2><h3 id="一、-什么是-Volatile-关键字？"><a href="#一、-什么是-Volatile-关键字？" class="headerlink" title="一、 什么是 Volatile 关键字？"></a>一、 什么是 Volatile 关键字？</h3><p><code>volatile</code> 是 Java 提供的一种<strong>轻量级的同步机制</strong>。它的核心作用是确保变量的修改对所有线程都是可见的，并防止指令重排序。</p>
+<p>在 Java 内存模型（JMM）中，每个线程有自己的工作内存（私有缓存），线程操作变量时会先从主内存拷贝一份。如果一个变量没被 <code>volatile</code> 修饰，线程修改完后可能不会立即写回主内存，导致其他线程读到的是旧值。</p>
+<hr>
+<h3 id="二、-Volatile-在多线程中的两大作用"><a href="#二、-Volatile-在多线程中的两大作用" class="headerlink" title="二、 Volatile 在多线程中的两大作用"></a>二、 Volatile 在多线程中的两大作用</h3><ol>
+<li><p><strong>保证内存可见性 (Visibility)</strong>：</p>
+<ul>
+<li>一旦一个变量被声明为 volatile，任何线程对它的修改都会立即刷新到主内存中；同时，其他线程在读取该变量时，会强制从主内存中读取最新值，而不是从自己的工作内存。</li>
+</ul>
+</li>
+<li><p><strong>禁止指令重排序 (Ordering)</strong>：</p>
+<ul>
+<li>为了优化性能，编译器和处理器可能会对代码指令进行乱序执行。volatile 通过插入“内存屏障（Memory Barrier）”来防止这种重排序。</li>
+<li><strong>典型应用：</strong> 单例模式中的 <strong>DCL（双重检查锁）</strong>。如果不加 volatile，在对象初始化时，由于重排序，另一个线程可能会拿到一个“尚未完全初始化完成”的对象引用。</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、-Volatile-与-Synchronized-的区别"><a href="#三、-Volatile-与-Synchronized-的区别" class="headerlink" title="三、 Volatile 与 Synchronized 的区别"></a>三、 Volatile 与 Synchronized 的区别</h3><p>虽然两者都用于并发编程，但它们有本质的不同：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特性</td>
+<td>Volatile</td>
+<td>Synchronized</td>
+</tr>
+<tr>
+<td><strong>性质</strong></td>
+<td>变量修饰符，轻量级。</td>
+<td>关键字，可修饰方法或代码块，重量级。</td>
+</tr>
+<tr>
+<td><strong>原子性</strong></td>
+<td><strong>不保证原子性</strong>（如 i++ 操作无法保证正确）。</td>
+<td><strong>保证原子性</strong>（同一时间只有一个线程执行）。</td>
+</tr>
+<tr>
+<td><strong>可见性</strong></td>
+<td>保证可见性。</td>
+<td>保证可见性（解锁前必须刷新回主内存）。</td>
+</tr>
+<tr>
+<td><strong>阻塞</strong></td>
+<td><strong>不会</strong>造成线程阻塞，性能高。</td>
+<td><strong>会</strong>造成线程阻塞，涉及上下文切换，性能相对较低。</td>
+</tr>
+<tr>
+<td><strong>有序性</strong></td>
+<td>保证有序性（禁止重排序）。</td>
+<td>保证有序性（通过互斥保证单线程执行）。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h3><p>在实际开发中（如我简历中提到的广告引擎维护）：</p>
+<ul>
+<li><strong>使用 volatile 的场景：</strong> 当你需要一个简单的“状态标记位”（如 isReady, isShutdown），且该变量的操作不依赖当前值（即不需要 i++ 这种操作）时，volatile 是性能最优的选择。</li>
+<li><strong>使用 synchronized 的场景：</strong> 当你需要执行复杂的复合操作，或者需要保证操作的“原子性”时（例如在“问卷系统”中扣减优惠券额度、更新计数器），必须使用 synchronized 或 ReentrantLock。</li>
+</ul>
+<p><strong>总结：</strong> volatile 解决了“看得到”的问题，而 synchronized 解决了“写得准”的问题。在追求高并发性能时，我会优先考虑 volatile 或 Atomic 原子类，只有在必要时才使用较重的锁机制。</p>
+<hr>
+<h2 id="描述-ReentrantLock-的实现原理，以及它与-Synchronized-的比较（包括公平锁和非公平锁）"><a href="#描述-ReentrantLock-的实现原理，以及它与-Synchronized-的比较（包括公平锁和非公平锁）" class="headerlink" title="描述 ReentrantLock 的实现原理，以及它与 Synchronized 的比较（包括公平锁和非公平锁）"></a>描述 ReentrantLock 的实现原理，以及它与 Synchronized 的比较（包括公平锁和非公平锁）</h2><h3 id="一、-ReentrantLock-的实现原理"><a href="#一、-ReentrantLock-的实现原理" class="headerlink" title="一、 ReentrantLock 的实现原理"></a>一、 ReentrantLock 的实现原理</h3><p>ReentrantLock 的核心是基于 <strong>AQS（AbstractQueuedSynchronizer，抽象队列同步器）</strong> 实现的。</p>
+<ol>
+<li><p><strong>状态管理（state）</strong>：AQS 内部维护一个 volatile 修饰的 state 变量。</p>
+<ul>
+<li>当 state &#x3D; 0 时，表示锁未被占用。</li>
+<li>线程尝试通过 <strong>CAS（Compare-And-Swap）</strong> 操作将 state 从 0 修改为 1 来获取锁。</li>
+</ul>
+</li>
+<li><p><strong>重入性实现</strong>：</p>
+<ul>
+<li>如果获取锁的线程是“当前占有锁的线程”，则 state 加 1，这就是“可重入”的体现。</li>
+<li>释放锁时，state 减 1，直到 state &#x3D; 0 时锁才完全释放。</li>
+</ul>
+</li>
+<li><p><strong>等待队列（CLH 变体）</strong>：</p>
+<ul>
+<li>如果 CAS 失败（锁已被占用），线程会被封装成一个 Node 节点，进入一个双向同步队列中挂起（LockSupport.park）。</li>
+<li>当持有锁的线程释放锁后，会唤醒队列中头节点的下一个节点尝试获取锁。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="二、-ReentrantLock-vs-Synchronized"><a href="#二、-ReentrantLock-vs-Synchronized" class="headerlink" title="二、 ReentrantLock vs Synchronized"></a>二、 ReentrantLock vs Synchronized</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特性</td>
+<td>Synchronized</td>
+<td>ReentrantLock</td>
+</tr>
+<tr>
+<td><strong>实现层面</strong></td>
+<td>JVM 层面（关键字），由 C++ 实现。</td>
+<td>JDK 层面（API），纯 Java 编写。</td>
+</tr>
+<tr>
+<td><strong>锁的释放</strong></td>
+<td>代码执行完毕或异常时<strong>自动</strong>释放。</td>
+<td>必须在 finally 块中<strong>手动</strong>释放，否则易死锁。</td>
+</tr>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>较低。不可中断，不支持超时。</td>
+<td>较高。支持 tryLock()、lockInterruptibly()。</td>
+</tr>
+<tr>
+<td><strong>条件变量</strong></td>
+<td>只有 1 个（wait&#x2F;notify）。</td>
+<td>支持多个 Condition（精确唤醒某些线程）。</td>
+</tr>
+<tr>
+<td><strong>公平性</strong></td>
+<td>只支持<strong>非公平锁</strong>。</td>
+<td>支持<strong>公平锁</strong>和<strong>非公平锁</strong>（默认）。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="三、-公平锁与非公平锁"><a href="#三、-公平锁与非公平锁" class="headerlink" title="三、 公平锁与非公平锁"></a>三、 公平锁与非公平锁</h3><p>这是 ReentrantLock 的一个重要特性：</p>
+<ul>
+<li><p><strong>公平锁 (Fair Lock)</strong>：</p>
+<ul>
+<li><strong>机制</strong>：严格按照线程等待的先后顺序（FIFO）获取锁。</li>
+<li><strong>优点</strong>：不会产生“线程饥饿”现象。</li>
+<li><strong>缺点</strong>：吞吐量低，因为频繁的线程唤醒和上下文切换开销大。</li>
+</ul>
+</li>
+<li><p><strong>非公平锁 (Non-fair Lock) - 默认</strong>：</p>
+<ul>
+<li><strong>机制</strong>：线程尝试获取锁时，不检查队列，直接尝试 CAS 抢占。抢不到再进队列。</li>
+<li><strong>优点</strong>：吞吐量高。如果一个线程刚释放锁，另一个线程正好来申请，它可以直接使用，省去了唤醒队列线程的时间。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="四、-实际项目中的应用场景"><a href="#四、-实际项目中的应用场景" class="headerlink" title="四、 实际项目中的应用场景"></a>四、 实际项目中的应用场景</h3><ol>
+<li><p><strong>使用 synchronized 的场景</strong>：如果是简单的线程同步（如对一个计数器自增），我优先选 synchronized。因为 Java 1.6 后引入了偏向锁、轻量级锁，在低竞争下性能极佳，且代码简洁，不会忘记释放锁。</p>
+</li>
+<li><p><strong>使用 ReentrantLock 的场景</strong>：</p>
+<ul>
+<li><strong>超时控制</strong>：比如在请求 AI 模型接口（FastAPI 后端）同步数据时，如果锁等待超过 3 秒还没拿到，我希望记录日志并返回失败，此时 tryLock(3, TimeUnit.SECONDS) 非常有用。</li>
+<li><strong>多条件唤醒</strong>：在实现生产者-消费者模型处理海量订单数据时，可以用两个 Condition（notFull, notEmpty）来精准唤醒生产线程或消费线程，避免 notifyAll 带来的“惊群效应”。</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+    
+    
+  </article>
+  
+  
+  
+  <!-- 文章导航 -->
+<div class="post-nav">
+  
+  
+  
+    <a href="/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="post-nav-next">
+      <span class="nav-label">Next</span>
+      <span class="nav-title">AI助手聊天系统项目文档</span>
+    </a>
+  
+</div>
+</div>
+    </main>
+    
+    
+      <aside class="sidebar">
+  <!-- 文章目录：仅在文章页面显示，且排他性显示 -->
+  
+  
+  
+    <div class="widget toc-widget">
+      <h3 class="widget-title">目录</h3>
+      <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E8%A7%A3%E9%87%8A-Java-%E4%B8%AD%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E-ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%85%B6%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">请解释 Java 中集合框架的层次结构，并举例说明 ArrayList 和 LinkedList 的区别及其适用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81-Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">一、 Java 集合框架的层次结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-ArrayList-%E4%B8%8E-LinkedList-%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-text">二、 ArrayList 与 LinkedList 的深度对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Volatile-%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9F%E5%AE%83%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%8E-Synchronized-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">什么是 Volatile 关键字？它在多线程环境中的作用是什么？与 Synchronized 的区别是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E4%BB%80%E4%B9%88%E6%98%AF-Volatile-%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9F"><span class="toc-text">一、 什么是 Volatile 关键字？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-Volatile-%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%A4%E5%A4%A7%E4%BD%9C%E7%94%A8"><span class="toc-text">二、 Volatile 在多线程中的两大作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81-Volatile-%E4%B8%8E-Synchronized-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">三、 Volatile 与 Synchronized 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">四、总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-ReentrantLock-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%B8%8E-Synchronized-%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%88%E5%8C%85%E6%8B%AC%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81%EF%BC%89"><span class="toc-text">描述 ReentrantLock 的实现原理，以及它与 Synchronized 的比较（包括公平锁和非公平锁）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81-ReentrantLock-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">一、 ReentrantLock 的实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-ReentrantLock-vs-Synchronized"><span class="toc-text">二、 ReentrantLock vs Synchronized</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%85%AC%E5%B9%B3%E9%94%81%E4%B8%8E%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81"><span class="toc-text">三、 公平锁与非公平锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">四、 实际项目中的应用场景</span></a></li></ol></li></ol>
+      </div>
+    </div>
+  
+</aside>
+    
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <!-- 社交链接 -->
+    
+      <div class="social-links">
+        
+          
+            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
+              <i class="ri-github-line"></i>
+            </a>
+          
+        
+      </div>
+    
+    
+    <!-- 版权信息 -->
+    <div class="copyright">
+      
+        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
+        
+      
+    </div>
+    
+
+  </div>
+</footer>
+  <!-- 主题核心脚本 -->
+<script src="/js/main.js"></script>
+
+<!-- 返回顶部按钮 -->
+
+  <button class="back-to-top" aria-label="返回顶部">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+
+<!-- 搜索模态框 -->
+
+  <div class="search-modal" aria-hidden="true">
+    <div class="search-overlay"></div>
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
+        <button class="search-close" aria-label="关闭搜索">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+</body>
+</html>

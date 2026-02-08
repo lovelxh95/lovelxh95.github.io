@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JVM 常用命令 - Morris</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
+  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
+  <meta name="author" content="Morris">
+  
+  <!-- Favicon -->
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+  <!-- GitHub风格主题切换 -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('github-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // 设置主题颜色meta标签
+      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeColorMeta) {
+        themeColorMeta = document.createElement('meta');
+        themeColorMeta.name = 'theme-color';
+        document.head.appendChild(themeColorMeta);
+      }
+      themeColorMeta.content = themeColor;
+    })();
+  </script>
+  
+  <!-- Remix Icon 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- 代码高亮 -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/github.css">
+
+  
+  <!-- 自定义CSS -->
+  
+  
+  <!-- Google Analytics -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+
+<body>
+  
+
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo/站点名称 -->
+    <div class="site-brand">
+      <a href="/" class="brand-link">
+        
+          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
+        
+        <span class="brand-name">Morris</span>
+      </a>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              首页
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/archives" class="nav-link">
+              归档
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              分类
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/tags" class="nav-link">
+              标签
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/about" class="nav-link">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="header-actions">
+      <!-- 搜索按钮 -->
+      
+        <button class="search-toggle" aria-label="搜索">
+          <i class="ri-search-line"></i>
+        </button>
+      
+      
+      <!-- 深色模式切换 -->
+      
+        <button class="theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-toggle" aria-label="菜单">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- 移动端菜单 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        
+          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
+        
+        <span class="mobile-name">Morris</span>
+      </div>
+      <button class="mobile-close" aria-label="关闭菜单">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        
+          <li class="mobile-nav-item">
+            <a href="/" class="mobile-nav-link"
+              首页
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/archives" class="mobile-nav-link"
+              归档
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/categories" class="mobile-nav-link"
+              分类
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/tags" class="mobile-nav-link"
+              标签
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/about" class="mobile-nav-link"
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-actions">
+      
+        <button class="mobile-theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line"></i>
+          <span>切换主题</span>
+        </button>
+      
+    </div>
+  </div>
+</header>
+  
+  
+
+  <div class="main-container is-post no-sidebar">
+    <main class="main-content">
+      <div class="post-page">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">JVM 常用命令</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="icon-calendar"></i>
+          <time datetime="2025-08-11T06:18:37.000Z">
+            2025-08-11 14:18
+          </time>
+        </div>
+        
+        
+          <div class="meta-item">
+            <i class="icon-folder"></i>
+            <ul class="category-link-list"><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/408/">408</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/fastapi/">fastapi</a></li></ul>
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-file-text"></i>
+            712 words
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-clock"></i>
+            2 min read
+          </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-body">
+      <ul>
+<li><strong>JPS</strong>：JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。</li>
+<li><strong>jstat</strong>：jstat(JVM statistics Monitoring)是用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据。</li>
+<li><strong>jmap</strong>：jmap(JVM Memory Map)命令用于生成heap dump文件，如果不使用这个命令，还阔以使用-XX:+HeapDumpOnOutOfMemoryError参数来让虚拟机出现OOM的时候自动生成dump文件。 jmap不仅能生成dump文件，还阔以查询finalize执行队列、Java堆和永久代的详细信息，如当前使用率、当前使用的是哪种收集器等。</li>
+<li><strong>jhat</strong>： jhat(JVM Heap Analysis Tool)命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP&#x2F;HTML服务器，生成dump的分析结果后，可以在浏览器中查看。在此要注意，一般不会直接在服务器上进行分析，因为jhat是一个耗时并且耗费硬件资源的过程，一般把服务器生成的dump文件复制到本地或其他机器上进行分析。</li>
+<li><strong>jstack</strong>：jstack用于生成java虚拟机当前时刻的线程快照。jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做什么事情，或者等待什么资源。 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。</li>
+</ul>
+
+    </div>
+    
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          <i class="icon-tags"></i>
+          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E5%BC%80%E5%8F%91/" rel="tag">python开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li></ul>
+        </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  <!-- 文章导航 -->
+<div class="post-nav">
+  
+    <a href="/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/" class="post-nav-prev">
+      <span class="nav-label">Previous</span>
+      <span class="nav-title">排序算法(C++实现)</span>
+    </a>
+  
+  
+  
+    <a href="/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" class="post-nav-next">
+      <span class="nav-label">Next</span>
+      <span class="nav-title">sleep() 和 wait() 有什么区别</span>
+    </a>
+  
+</div>
+</div>
+    </main>
+    
+    
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <!-- 社交链接 -->
+    
+      <div class="social-links">
+        
+          
+            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
+              <i class="ri-github-line"></i>
+            </a>
+          
+        
+      </div>
+    
+    
+    <!-- 版权信息 -->
+    <div class="copyright">
+      
+        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
+        
+      
+    </div>
+    
+
+  </div>
+</footer>
+  <!-- 主题核心脚本 -->
+<script src="/js/main.js"></script>
+
+<!-- 返回顶部按钮 -->
+
+  <button class="back-to-top" aria-label="返回顶部">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+
+<!-- 搜索模态框 -->
+
+  <div class="search-modal" aria-hidden="true">
+    <div class="search-overlay"></div>
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
+        <button class="search-close" aria-label="关闭搜索">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+</body>
+</html>

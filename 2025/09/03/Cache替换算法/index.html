@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cache替换算法 - Morris</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
+  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
+  <meta name="author" content="Morris">
+  
+  <!-- Favicon -->
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+  <!-- GitHub风格主题切换 -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('github-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // 设置主题颜色meta标签
+      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeColorMeta) {
+        themeColorMeta = document.createElement('meta');
+        themeColorMeta.name = 'theme-color';
+        document.head.appendChild(themeColorMeta);
+      }
+      themeColorMeta.content = themeColor;
+    })();
+  </script>
+  
+  <!-- Remix Icon 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- 代码高亮 -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/github.css">
+
+  
+  <!-- 自定义CSS -->
+  
+  
+  <!-- Google Analytics -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+
+<body>
+  
+
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo/站点名称 -->
+    <div class="site-brand">
+      <a href="/" class="brand-link">
+        
+          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
+        
+        <span class="brand-name">Morris</span>
+      </a>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              首页
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/archives" class="nav-link">
+              归档
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              分类
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/tags" class="nav-link">
+              标签
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/about" class="nav-link">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="header-actions">
+      <!-- 搜索按钮 -->
+      
+        <button class="search-toggle" aria-label="搜索">
+          <i class="ri-search-line"></i>
+        </button>
+      
+      
+      <!-- 深色模式切换 -->
+      
+        <button class="theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-toggle" aria-label="菜单">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- 移动端菜单 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        
+          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
+        
+        <span class="mobile-name">Morris</span>
+      </div>
+      <button class="mobile-close" aria-label="关闭菜单">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        
+          <li class="mobile-nav-item">
+            <a href="/" class="mobile-nav-link"
+              首页
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/archives" class="mobile-nav-link"
+              归档
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/categories" class="mobile-nav-link"
+              分类
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/tags" class="mobile-nav-link"
+              标签
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/about" class="mobile-nav-link"
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-actions">
+      
+        <button class="mobile-theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line"></i>
+          <span>切换主题</span>
+        </button>
+      
+    </div>
+  </div>
+</header>
+  
+  
+
+  <div class="main-container is-post ">
+    <main class="main-content">
+      <div class="post-page">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">Cache替换算法</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="icon-calendar"></i>
+          <time datetime="2025-09-03T14:04:17.000Z">
+            2025-09-03 22:04
+          </time>
+        </div>
+        
+        
+          <div class="meta-item">
+            <i class="icon-folder"></i>
+            <ul class="category-link-list"><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/408/">408</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/fastapi/">fastapi</a></li></ul>
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-file-text"></i>
+            2989 words
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-clock"></i>
+            8 min read
+          </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-body">
+      <h3 id="替换算法汇总"><a href="#替换算法汇总" class="headerlink" title="替换算法汇总"></a>替换算法汇总</h3><table>
+<thead>
+<tr>
+<th>算法</th>
+<th>英文全称</th>
+<th>原理</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>随机算法</strong></td>
+<td>Random Replacement</td>
+<td>随机选择一个 Cache 块替换</td>
+<td>实现简单，硬件开销小</td>
+<td>未考虑访问模式，命中率低</td>
+<td>对性能要求不高，硬件资源有限的场景</td>
+</tr>
+<tr>
+<td><strong>先进先出算法</strong></td>
+<td>FIFO（First In First Out）</td>
+<td>替换最早进入 Cache 的块</td>
+<td>实现简单，硬件开销小</td>
+<td>未考虑数据访问频率，可能替换热点数据</td>
+<td>嵌入式系统、简单处理器</td>
+</tr>
+<tr>
+<td><strong>最近最少使用算法</strong></td>
+<td>LRU（Least Recently Used）</td>
+<td>替换最近最久未使用的块</td>
+<td>较好地利用时间局部性，命中率高</td>
+<td>实现较复杂，需要额外硬件支持</td>
+<td>通用处理器、对性能要求高的场景</td>
+</tr>
+<tr>
+<td><strong>最不经常使用算法</strong></td>
+<td>LFU（Least Frequently Used）</td>
+<td>替换访问次数最少的块</td>
+<td>适合访问频率差异大的场景</td>
+<td>对访问模式变化不敏感，实现复杂</td>
+<td>特定应用场景，如数据库缓存</td>
+</tr>
+</tbody></table>
+<h3 id="为什么需要-Cache-替换算法？"><a href="#为什么需要-Cache-替换算法？" class="headerlink" title="为什么需要 Cache 替换算法？"></a>为什么需要 Cache 替换算法？</h3><p><strong>Cache（高速缓存）<strong>是一种容量小但速度极快的存储器，位于 CPU 和主内存之间。它的作用是存放主内存中最常被访问的数据的一个副本。当 CPU 需要数据时，它首先检查 Cache。如果数据在 Cache 中（称为</strong>命中, Hit</strong>），CPU 就可以快速获取；如果不在（称为<strong>未命中, Miss</strong>），CPU 就需要从慢速的主内存中读取数据，并将其加载到 Cache 中。</p>
+<p>由于 Cache 的容量远小于主内存，它很快就会被填满。当 Cache 已满，且 CPU 需要加载新的数据时，就必须选择一个已有的数据块（Cache Line）将其丢弃，以便为新数据腾出空间。<strong>Cache 替换算法</strong>就是用来决定“应该丢弃哪个数据块”的策略。一个好的替换算法能够尽可能保留未来最可能被用到的数据，从而提高 Cache 的命中率，提升系统整体性能。</p>
+<h3 id="1-先进先出算法-First-In-First-Out-FIFO"><a href="#1-先进先出算法-First-In-First-Out-FIFO" class="headerlink" title="1. 先进先出算法 (First-In, First-Out, FIFO)"></a>1. 先进先出算法 (First-In, First-Out, FIFO)</h3><h4 id="算法讲解"><a href="#算法讲解" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>FIFO 是最简单的替换算法。它将 Cache 中的数据块视为一个队列。当需要替换时，它会选择<strong>最早进入 Cache 的数据块</strong>进行替换，无论这个数据块最近是否被访问过。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>假设我们的 Cache 有 3 个槽位（Cache Size &#x3D; 3），我们依次请求以下页面序列：</p>
+<p>7, 0, 1, 2, 0, 3, 0, 4</p>
+<table>
+<thead>
+<tr>
+<th>请求页面</th>
+<th>Cache 状态 (从老到新)</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>7</strong></td>
+<td><code>[7]</code></td>
+<td>Miss, 7 进入</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[7, 0]</code></td>
+<td>Miss, 0 进入</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><code>[7, 0, 1]</code></td>
+<td>Miss, 1 进入 (Cache 已满)</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>[0, 1, 2]</code></td>
+<td>Miss, 替换最早进入的<strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[0, 1, 2]</code></td>
+<td><strong>Hit</strong></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><code>[1, 2, 3]</code></td>
+<td>Miss, 替换最早进入的<strong>0</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[2, 3, 0]</code></td>
+<td>Miss, 替换最早进入的<strong>1</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><code>[3, 0, 4]</code></td>
+<td>Miss, 替换最早进入的<strong>2</strong></td>
+</tr>
+</tbody></table>
+<p>在这个例子中，总共发生了 7 次 Miss 和 1 次 Hit。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><strong>实现简单</strong>：只需要一个简单的队列结构即可实现，算法开销非常小。</li>
+<li><strong>理解容易</strong>：逻辑清晰，易于理解和调试。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>性能不佳</strong>：完全不考虑数据的访问模式。一个经常被访问的热点数据，可能会因为进入 Cache 的时间比较早而被无情地替换出去，导致命中率低下。</li>
+<li><strong>存在 Belady 异常</strong>：在某些情况下，增加 Cache 的容量反而可能导致命中率下降。这是 FIFO 算法一个著名的缺陷。</li>
+</ul>
+<hr>
+<h3 id="2-最近最少使用算法-Least-Recently-Used-LRU"><a href="#2-最近最少使用算法-Least-Recently-Used-LRU" class="headerlink" title="2. 最近最少使用算法 (Least Recently Used, LRU)"></a>2. 最近最少使用算法 (Least Recently Used, LRU)</h3><h4 id="算法讲解-1"><a href="#算法讲解-1" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LRU 算法的核心思想是“如果一个数据在最近一段时间没有被访问到，那么它在将来被访问的可能性也很小”。因此，当需要替换时，LRU 会选择最长时间没有被访问过的数据块进行替换。这个算法基于“时间局部性”原理，即最近被访问的数据很可能在不久的将来再次被访问。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>同样，Cache 有 3 个槽位，请求序列为：</p>
+<p>7, 0, 1, 2, 0, 3, 0, 4</p>
+<table>
+<thead>
+<tr>
+<th>请求页面</th>
+<th>Cache 状态 (从最少使用到最近使用)</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>7</strong></td>
+<td><code>[7]</code></td>
+<td>Miss, 7 进入</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[7, 0]</code></td>
+<td>Miss, 0 进入</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><code>[7, 0, 1]</code></td>
+<td>Miss, 1 进入 (Cache 已满)</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>[0, 1, 2]</code></td>
+<td>Miss, 替换最久未使用的<strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[1, 2, 0]</code></td>
+<td><strong>Hit</strong>, 0 变为最近使用</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><code>[2, 0, 3]</code></td>
+<td>Miss, 替换最久未使用的<strong>1</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><code>[2, 3, 0]</code></td>
+<td><strong>Hit</strong>, 0 变为最近使用</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><code>[3, 0, 4]</code></td>
+<td>Miss, 替换最久未使用的<strong>2</strong></td>
+</tr>
+</tbody></table>
+<p>在这个例子中，总共发生了 6 次 Miss 和 2 次 Hit，性能优于 FIFO。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><strong>性能好</strong>：充分利用了程序访问的“时间局部性”原理，在大多数场景下都有很高的命中率。</li>
+<li><strong>没有 Belady 异常</strong>：增加 Cache 容量总会提高或保持原有的命中率。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>实现复杂，开销大</strong>：需要跟踪记录每个数据块的访问历史。常见的实现方式是使用一个双向链表和哈希表的组合，每次访问都需要更新链表节点的位置，这在硬件和软件上都有较高的开销。</li>
+</ul>
+<hr>
+<h3 id="3-最不经常使用算法-Least-Frequently-Used-LFU"><a href="#3-最不经常使用算法-Least-Frequently-Used-LFU" class="headerlink" title="3. 最不经常使用算法 (Least Frequently Used, LFU)"></a>3. 最不经常使用算法 (Least Frequently Used, LFU)</h3><h4 id="算法讲解-2"><a href="#算法讲解-2" class="headerlink" title="算法讲解"></a>算法讲解</h4><p>LFU 算法的核心思想是“<strong>如果一个数据在过去一段时间内被访问的次数很少，那么它在将来被访问的可能性也很小</strong>”。因此，当需要替换时，LFU 会选择被访问次数最少的数据块进行替换。如果存在多个访问次数相同的数据块，通常会结合 LRU 策略，替换其中最久未被访问的那个。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><p>假设 Cache 有 3 个槽位，请求序列为：</p>
+<p>1, 2, 3, 1, 2, 4, 1, 2, 5</p>
+<table>
+<thead>
+<tr>
+<th>请求页面</th>
+<th>Cache 状态 (页面:访问次数)</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td><code>[(1:1)]</code></td>
+<td>Miss</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>[(1:1), (2:1)]</code></td>
+<td>Miss</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><code>[(1:1), (2:1), (3:1)]</code></td>
+<td>Miss (Cache 已满)</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><code>[(1:2), (2:1), (3:1)]</code></td>
+<td><strong>Hit</strong>, 1 的计数增加</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>[(1:2), (2:2), (3:1)]</code></td>
+<td><strong>Hit</strong>, 2 的计数增加</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><code>[(1:2), (2:2), (4:1)]</code></td>
+<td>Miss, 替换访问次数最少的<strong>3</strong></td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><code>[(1:3), (2:2), (4:1)]</code></td>
+<td><strong>Hit</strong>, 1 的计数增加</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>[(1:3), (2:3), (4:1)]</code></td>
+<td><strong>Hit</strong>, 2 的计数增加</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><code>[(1:3), (2:3), (5:1)]</code></td>
+<td>Miss, 替换访问次数最少的<strong>4</strong></td>
+</tr>
+</tbody></table>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><strong>考虑了访问频率</strong>：对于那些具有稳定访问模式、某些数据被长期频繁访问的场景，LFU 的效果可能优于 LRU。</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>实现更复杂</strong>：不仅要记录访问历史，还要维护每个数据块的访问计数值，通常需要使用堆或优先队列等数据结构，开销比 LRU 更大。</li>
+<li><strong>无法适应访问模式的变化</strong>：一个曾经被高频访问但现在不再需要的数据，可能会因为其高计数值而长时间“污染”Cache，无法被及时替换出去。</li>
+<li><strong>新加入的数据块容易被淘汰</strong>：一个新数据刚进入 Cache 时，其访问次数为 1，很容易在下一次替换中被立即淘汰，导致没有机会“成长”为热点数据。</li>
+</ul>
+
+    </div>
+    
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          <i class="icon-tags"></i>
+          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E5%BC%80%E5%8F%91/" rel="tag">python开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li></ul>
+        </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  <!-- 文章导航 -->
+<div class="post-nav">
+  
+    <a href="/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/" class="post-nav-prev">
+      <span class="nav-label">Previous</span>
+      <span class="nav-title">树的性质</span>
+    </a>
+  
+  
+  
+    <a href="/2025/09/03/Cache%E6%98%A0%E5%B0%84/" class="post-nav-next">
+      <span class="nav-label">Next</span>
+      <span class="nav-title">Cache映射</span>
+    </a>
+  
+</div>
+</div>
+    </main>
+    
+    
+      <aside class="sidebar">
+  <!-- 文章目录：仅在文章页面显示，且排他性显示 -->
+  
+  
+  
+    <div class="widget toc-widget">
+      <h3 class="widget-title">目录</h3>
+      <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB"><span class="toc-text">替换算法汇总</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-Cache-%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95%EF%BC%9F"><span class="toc-text">为什么需要 Cache 替换算法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95-First-In-First-Out-FIFO"><span class="toc-text">1. 先进先出算法 (First-In, First-Out, FIFO)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3"><span class="toc-text">算法讲解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95-Least-Recently-Used-LRU"><span class="toc-text">2. 最近最少使用算法 (Least Recently Used, LRU)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3-1"><span class="toc-text">算法讲解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%80%E4%B8%8D%E7%BB%8F%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95-Least-Frequently-Used-LFU"><span class="toc-text">3. 最不经常使用算法 (Least Frequently Used, LFU)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3-2"><span class="toc-text">算法讲解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-text">缺点</span></a></li></ol></li></ol>
+      </div>
+    </div>
+  
+</aside>
+    
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <!-- 社交链接 -->
+    
+      <div class="social-links">
+        
+          
+            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
+              <i class="ri-github-line"></i>
+            </a>
+          
+        
+      </div>
+    
+    
+    <!-- 版权信息 -->
+    <div class="copyright">
+      
+        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
+        
+      
+    </div>
+    
+
+  </div>
+</footer>
+  <!-- 主题核心脚本 -->
+<script src="/js/main.js"></script>
+
+<!-- 返回顶部按钮 -->
+
+  <button class="back-to-top" aria-label="返回顶部">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+
+<!-- 搜索模态框 -->
+
+  <div class="search-modal" aria-hidden="true">
+    <div class="search-overlay"></div>
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
+        <button class="search-close" aria-label="关闭搜索">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+</body>
+</html>

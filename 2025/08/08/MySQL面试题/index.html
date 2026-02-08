@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL面试题 - Morris</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="欢迎来到我的个人博客！这里记录着我的想法、学习和生活。">
+  <meta name="keywords" content="Hexo, GitHub, Blog, Theme">
+  <meta name="author" content="Morris">
+  
+  <!-- Favicon -->
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+  <!-- GitHub风格主题切换 -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('github-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // 设置主题颜色meta标签
+      const themeColor = savedTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeColorMeta) {
+        themeColorMeta = document.createElement('meta');
+        themeColorMeta.name = 'theme-color';
+        document.head.appendChild(themeColorMeta);
+      }
+      themeColorMeta.content = themeColor;
+    })();
+  </script>
+  
+  <!-- Remix Icon 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- 代码高亮 -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/github.css">
+
+  
+  <!-- 自定义CSS -->
+  
+  
+  <!-- Google Analytics -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
+</head>
+
+<body>
+  
+
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo/站点名称 -->
+    <div class="site-brand">
+      <a href="/" class="brand-link">
+        
+          <img src="/images/img.jpg" alt="Morris" class="brand-logo">
+        
+        <span class="brand-name">Morris</span>
+      </a>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              首页
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/archives" class="nav-link">
+              归档
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              分类
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/tags" class="nav-link">
+              标签
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="/about" class="nav-link">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="header-actions">
+      <!-- 搜索按钮 -->
+      
+        <button class="search-toggle" aria-label="搜索">
+          <i class="ri-search-line"></i>
+        </button>
+      
+      
+      <!-- 深色模式切换 -->
+      
+        <button class="theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-toggle" aria-label="菜单">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- 移动端菜单 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        
+          <img src="/images/img.jpg" alt="Morris" class="mobile-logo">
+        
+        <span class="mobile-name">Morris</span>
+      </div>
+      <button class="mobile-close" aria-label="关闭菜单">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        
+          <li class="mobile-nav-item">
+            <a href="/" class="mobile-nav-link"
+              首页
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/archives" class="mobile-nav-link"
+              归档
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/categories" class="mobile-nav-link"
+              分类
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/tags" class="mobile-nav-link"
+              标签
+            </a>
+          </li>
+        
+          <li class="mobile-nav-item">
+            <a href="/about" class="mobile-nav-link"
+              关于
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="mobile-actions">
+      
+        <button class="mobile-theme-toggle" aria-label="切换主题">
+          <i class="ri-sun-line"></i>
+          <span>切换主题</span>
+        </button>
+      
+    </div>
+  </div>
+</header>
+  
+  
+
+  <div class="main-container is-post ">
+    <main class="main-content">
+      <div class="post-page">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">MySQL面试题</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="icon-calendar"></i>
+          <time datetime="2025-08-07T17:10:55.000Z">
+            2025-08-08 01:10
+          </time>
+        </div>
+        
+        
+          <div class="meta-item">
+            <i class="icon-folder"></i>
+            <ul class="category-link-list"><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/408/">408</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/Java%E9%9D%A2%E8%AF%95/">Java面试</a></li><li class="category-link-list-item"><a class="category-link-list-link" href="/categories/fastapi/">fastapi</a></li></ul>
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-file-text"></i>
+            2682 words
+          </div>
+        
+        
+        
+          <div class="meta-item">
+            <i class="icon-clock"></i>
+            7 min read
+          </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-body">
+      <h3 id="MyISAM和InnoDB的区别有哪些"><a href="#MyISAM和InnoDB的区别有哪些" class="headerlink" title="MyISAM和InnoDB的区别有哪些"></a>MyISAM和InnoDB的区别有哪些</h3><ul>
+<li>InnoDB支持事务, MyISAM不支持</li>
+<li>InnoDB支持行级锁, MyISAM支持表级锁</li>
+<li>InnoDB支持多版本并发控制(MVVC), MyISAM不支持</li>
+<li>InnoDB支持外键, MyISAM不支持</li>
+<li>MyISAM支持全文索引, InnoDB部分版本不支持(但可以使用Sphinx插件)</li>
+</ul>
+<h3 id="MySQL怎么恢复半个月前的数据"><a href="#MySQL怎么恢复半个月前的数据" class="headerlink" title="MySQL怎么恢复半个月前的数据"></a>MySQL怎么恢复半个月前的数据</h3><p>通过整库备份+binlog进行恢复. 前提是要有定期整库备份且保存了binlog日志</p>
+<h3 id="MySQL事务的隔离级别-分别有什么特点"><a href="#MySQL事务的隔离级别-分别有什么特点" class="headerlink" title="MySQL事务的隔离级别, 分别有什么特点"></a>MySQL事务的隔离级别, 分别有什么特点</h3><ul>
+<li>读未提交(RU): 一个事务还没提交时, 它做的变更就能被别的事务看到</li>
+<li>读提交(RC): 一个事务提交之后, 它做的变更才会被其他事务看到</li>
+<li>可重复读(RR): 一个事务执行过程中看到的数据, 总是跟这个事务在启动时看到的数据是一致的. 当</li>
+</ul>
+<p>然在可重复读隔离级别下, 未提交变更对其他事务也是不可见的</p>
+<ul>
+<li>串行化(S): 对于同一行记录, 读写都会加锁. 当出现读写锁冲突的时候, 后访问的事务必须等前一个</li>
+</ul>
+<p>事务执行完成才能继续执行</p>
+<h3 id="MySQL中有哪几种锁"><a href="#MySQL中有哪几种锁" class="headerlink" title="MySQL中有哪几种锁"></a>MySQL中有哪几种锁</h3><ul>
+<li>表级锁： 开销小， 加锁快； 不会出现死锁； 锁定粒度大， 发生锁冲突的概率最高， 并发度最低。</li>
+<li>行级锁： 开销大， 加锁慢； 会出现死锁； 锁定粒度最小， 发生锁冲突的概率最低， 并发度也最</li>
+</ul>
+<p><strong>高。</strong></p>
+<ul>
+<li>页面锁： 开销和加锁时间界于表锁和行锁之间； 会出现死锁； 锁定粒度界于表锁和行锁之间， 并</li>
+</ul>
+<p><strong>发度一般。</strong></p>
+<h3 id="MySQL-中有哪些不同的表格"><a href="#MySQL-中有哪些不同的表格" class="headerlink" title="MySQL 中有哪些不同的表格"></a>MySQL 中有哪些不同的表格</h3><p>共有 5 种类型的表格： 1、MyISAM2、Heap 3、Merge 4、INNODB 5、MISAM</p>
+<h3 id="MySQL-中InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？"><a href="#MySQL-中InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？" class="headerlink" title="MySQL 中InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？"></a>MySQL 中InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？</h3><ul>
+<li>read uncommited ： 读到未提交数据</li>
+<li>read committed： 脏读， 不可重复读</li>
+<li>repeatable read： 可重读</li>
+<li>serializable ： 串行事物</li>
+</ul>
+<h3 id="CHAR-和VARCHAR-的区别"><a href="#CHAR-和VARCHAR-的区别" class="headerlink" title="CHAR 和VARCHAR 的区别"></a>CHAR 和VARCHAR 的区别</h3><ul>
+<li><strong>char</strong>：定长，存取效率高，一般用于固定长度的表单提交数据存储，例如：身份证号，手机号，电话，密码等，长度不够的时候，会采取右补空格的方式。</li>
+<li><strong>varchar</strong>：不定长，更节省空间，需要用一个或者两个字节来存储数据的长度。具体规则是：如果列的最大长度小于或等于255字节，则只使用1个字节表示，否则使用2个字节。</li>
+</ul>
+<h3 id="SQL语句主要分为哪几类"><a href="#SQL语句主要分为哪几类" class="headerlink" title="SQL语句主要分为哪几类"></a>SQL语句主要分为哪几类</h3><ul>
+<li><strong>数据定义语言DDL</strong>（Data Ddefinition Language）CREATE，DROP，ALTER，主要为以上操作即对逻辑结构等有操作的，其中包括表结构，视图和索引。</li>
+<li><strong>数据查询语言DQL</strong>（Data Query Language）SELECT，这个较为好理解，即查询操作，以select关键字，各种简单查询，连接查询等，都属于DQL。</li>
+<li><strong>数据操纵语言DML</strong>（Data Manipulation Language）INSERT，UPDATE，DELETE 主要为以上操作，即对数据进行操作的，DQL与DML共同构建了常用的增删改查操作。</li>
+<li><strong>数据控制功能DCL</strong>（Data Control Language）GRANT，REVOKE，COMMIT，ROLLBACK主要为以上操作即对数据库安全性完整性等有操作的，可以简单的理解为权限控制等。</li>
+</ul>
+<h3 id="SQL-约束有哪些"><a href="#SQL-约束有哪些" class="headerlink" title="SQL 约束有哪些"></a>SQL 约束有哪些</h3><ul>
+<li><strong>NOT NULL</strong>: 用于控制字段的内容一定不能为空（NULL）。</li>
+<li><strong>UNIQUE</strong>: 控件字段内容不能重复，一个表允许有多个 Unique 约束。</li>
+<li><strong>PRIMARY KEY</strong>: 也是用于控件字段内容不能重复，但它在一个表只允许出现一个。</li>
+<li><strong>FOREIGN KEY</strong>: 用于预防破坏表之间连接的动作，也能防止非法数据插入外键列，因为它必须是它指向的那个表中的值之一。</li>
+</ul>
+<h3 id="主键和外键"><a href="#主键和外键" class="headerlink" title="主键和外键"></a>主键和外键</h3><ul>
+<li><strong>主键</strong>：表中经常有一个列或多列的组合，其值能唯一地标识表中的每一行，这样的一列或多列称为表的主键，通过它可强制表的实体完整性。一个表只能有一个 PRIMARY KEY 约束，而且 PRIMARY KEY 约束中的列不能接受空值。</li>
+<li><strong>外键</strong>：在一个表中存在的另一个表的主键称此表的外键。</li>
+</ul>
+<h3 id="in和exists的区别"><a href="#in和exists的区别" class="headerlink" title="in和exists的区别"></a>in和exists的区别</h3><p><strong>在 MySQL 中，IN 关键字用于在一个字段中匹配多个值</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column from table where column in (n1, n2, ...)</span><br></pre></td></tr></table></figure>
+
+<p><strong>EXISTS 关键字用于检查子查询的结果是否为空</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column1, column2 from table_1 where exists (select * from table2 where xxx=xxx)</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果查询的两个表大小相当，那么用in和exists差别不大。如果两个表中一个较小，一个是大表，则子查询表大的用exists，子查询表小的用in。</strong></p>
+<h3 id="drop-delete-truncate的区别"><a href="#drop-delete-truncate的区别" class="headerlink" title="drop delete truncate的区别"></a>drop delete truncate的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Delete</strong></th>
+<th><strong>Truncate</strong></th>
+<th><strong>Drop</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>类型</strong></td>
+<td><strong>属于DML</strong></td>
+<td><strong>属于DDL</strong></td>
+<td><strong>属于DDL</strong></td>
+</tr>
+<tr>
+<td><strong>回滚</strong></td>
+<td><strong>可回滚</strong></td>
+<td><strong>不可回滚</strong></td>
+<td><strong>不可回滚</strong></td>
+</tr>
+<tr>
+<td><strong>删除内容</strong></td>
+<td><strong>表结构还在，删除表的全部或者一部分数据行</strong></td>
+<td><strong>表结构还在，删除表中的所有数据</strong></td>
+<td><strong>从数据库中删除表，所有的数据行，索引和权限也会被删除</strong></td>
+</tr>
+<tr>
+<td><strong>删除速度</strong></td>
+<td><strong>删除速度慢，需要逐行删除</strong></td>
+<td><strong>删除速度快</strong></td>
+<td><strong>删除速度最快</strong></td>
+</tr>
+</tbody></table>
+<h3 id="replace-into-和-insert-on-duplicate-key-update的区别"><a href="#replace-into-和-insert-on-duplicate-key-update的区别" class="headerlink" title="replace into 和 insert on duplicate key update的区别"></a>replace into 和 insert on duplicate key update的区别</h3><ul>
+<li><code>replace into</code>和<code>on duplcate key update</code>都是只有在<code>primary key</code>或者<code>unique key</code>冲突的时候才会执行“更新操作”。</li>
+<li><code>replace into</code> 会将已有的数据删除然后重新插入，这样就会有一种情况，如果某些字段有默认值，但是<code>replace into</code>语句的字段不完整，则会设置成默认值，主键id会变更。</li>
+<li><code>on duplicate key update</code>则是执行<code>update</code>后面的语句</li>
+</ul>
+<h3 id="UNION-ALL与UNION的区别"><a href="#UNION-ALL与UNION的区别" class="headerlink" title="UNION ALL与UNION的区别"></a>UNION ALL与UNION的区别</h3><ul>
+<li><strong>返回结果</strong></li>
+</ul>
+<p><strong>union all是直接连接，取到得是所有值，记录可能有重复；</strong></p>
+<p><strong>union 是取唯一值，记录没有重复。</strong></p>
+<ul>
+<li><strong>排序</strong></li>
+</ul>
+<p><strong>union将会按照字段的顺序进行全量排序；</strong></p>
+<p><strong>union all只是简单的将两个结果合并后就返回。</strong></p>
+<ul>
+<li><strong>效率</strong></li>
+</ul>
+<p>从效率上说，union all 要比union快很多，所以，如果可以确认合并的两个结果集中不包含重复数据且不需要排序时的话，那么就使用union all。</p>
+
+    </div>
+    
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          <i class="icon-tags"></i>
+          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E5%BC%80%E5%8F%91/" rel="tag">python开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li></ul>
+        </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  <!-- 文章导航 -->
+<div class="post-nav">
+  
+    <a href="/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/" class="post-nav-prev">
+      <span class="nav-label">Previous</span>
+      <span class="nav-title">new String(&#34;abc&#34;)创建了多少个对象？</span>
+    </a>
+  
+  
+  
+</div>
+</div>
+    </main>
+    
+    
+      <aside class="sidebar">
+  <!-- 文章目录：仅在文章页面显示，且排他性显示 -->
+  
+  
+  
+    <div class="widget toc-widget">
+      <h3 class="widget-title">目录</h3>
+      <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM%E5%92%8CInnoDB%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">MyISAM和InnoDB的区别有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E6%80%8E%E4%B9%88%E6%81%A2%E5%A4%8D%E5%8D%8A%E4%B8%AA%E6%9C%88%E5%89%8D%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">MySQL怎么恢复半个月前的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9"><span class="toc-text">MySQL事务的隔离级别, 分别有什么特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E9%94%81"><span class="toc-text">MySQL中有哪几种锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A1%A8%E6%A0%BC"><span class="toc-text">MySQL 中有哪些不同的表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%B8%ADInnoDB-%E6%94%AF%E6%8C%81%E7%9A%84%E5%9B%9B%E7%A7%8D%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%90%8D%E7%A7%B0%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%80%90%E7%BA%A7%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">MySQL 中InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CHAR-%E5%92%8CVARCHAR-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">CHAR 和VARCHAR 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E8%AF%AD%E5%8F%A5%E4%B8%BB%E8%A6%81%E5%88%86%E4%B8%BA%E5%93%AA%E5%87%A0%E7%B1%BB"><span class="toc-text">SQL语句主要分为哪几类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-%E7%BA%A6%E6%9D%9F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">SQL 约束有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E5%92%8C%E5%A4%96%E9%94%AE"><span class="toc-text">主键和外键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in%E5%92%8Cexists%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">in和exists的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#drop-delete-truncate%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">drop delete truncate的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replace-into-%E5%92%8C-insert-on-duplicate-key-update%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">replace into 和 insert on duplicate key update的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UNION-ALL%E4%B8%8EUNION%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">UNION ALL与UNION的区别</span></a></li></ol>
+      </div>
+    </div>
+  
+</aside>
+    
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <!-- 社交链接 -->
+    
+      <div class="social-links">
+        
+          
+            <a href="https://github.com/lovelxh95" target="_blank" rel="noopener" class="social-link" aria-label="github">
+              <i class="ri-github-line"></i>
+            </a>
+          
+        
+      </div>
+    
+    
+    <!-- 版权信息 -->
+    <div class="copyright">
+      
+        <p class="copyright-text">© 2026 Morris. All rights reserved.</p>
+        
+      
+    </div>
+    
+
+  </div>
+</footer>
+  <!-- 主题核心脚本 -->
+<script src="/js/main.js"></script>
+
+<!-- 返回顶部按钮 -->
+
+  <button class="back-to-top" aria-label="返回顶部">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+
+<!-- 搜索模态框 -->
+
+  <div class="search-modal" aria-hidden="true">
+    <div class="search-overlay"></div>
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" class="search-input" placeholder="搜索文章..." aria-label="搜索">
+        <button class="search-close" aria-label="关闭搜索">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+</body>
+</html>
