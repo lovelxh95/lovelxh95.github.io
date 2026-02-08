@@ -1,344 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Morris</title>
-  
-  
-  <link href="https://codewith.top/atom.xml" rel="self"/>
-  
-  <link href="https://codewith.top/"/>
-  <updated>2026-01-03T07:41:56.552Z</updated>
-  <id>https://codewith.top/</id>
-  
   <author>
     <name>Morris</name>
-    
   </author>
-  
   <generator uri="https://hexo.io/">Hexo</generator>
-  
+  <id>https://codewith.top/</id>
+  <link href="https://codewith.top/" rel="alternate"/>
+  <link href="https://codewith.top/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, Morris</rights>
+  <title>Morris</title>
+  <updated>2026-01-03T07:41:56.552Z</updated>
   <entry>
-    <title>Java开发面试（1）</title>
-    <link href="https://codewith.top/2026/01/03/Java%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%EF%BC%881%EF%BC%89/"/>
+    <author>
+      <name>Morris</name>
+    </author>
     <id>https://codewith.top/2026/01/03/Java%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%EF%BC%881%EF%BC%89/</id>
+    <link href="https://codewith.top/2026/01/03/Java%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%EF%BC%881%EF%BC%89/"/>
     <published>2026-01-03T05:30:34.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景"><a href="#请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景" class="headerlink"]]>
+    </summary>
+    <title>Java开发面试（1）</title>
     <updated>2026-01-03T07:41:56.552Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景&quot;&gt;&lt;a href=&quot;#请解释-Java-中集合框架的层次结构，并举例说明-ArrayList-和-LinkedList-的区别及其适用场景&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
   </entry>
-  
   <entry>
-    <title>AI助手聊天系统项目文档</title>
-    <link href="https://codewith.top/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/"/>
-    <id>https://codewith.top/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/</id>
-    <published>2025-12-27T05:21:57.000Z</published>
-    <updated>2025-12-30T05:42:41.947Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;AI助手聊天系统项目文档&quot;&gt;&lt;a href=&quot;#AI助手聊天系统项目文档&quot; class=&quot;headerlink&quot; title=&quot;AI助手聊天系统项目文档&quot;&gt;&lt;/a&gt;AI助手聊天系统项目文档&lt;/h1&gt;&lt;h2 id=&quot;项目概述&quot;&gt;&lt;a href=&quot;#项目概述&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>Morris</name>
+    </author>
     <category term="fastapi" scheme="https://codewith.top/categories/fastapi/"/>
-    
-    
     <category term="python开发" scheme="https://codewith.top/tags/python%E5%BC%80%E5%8F%91/"/>
-    
+    <id>https://codewith.top/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/</id>
+    <link href="https://codewith.top/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/"/>
+    <published>2025-12-27T05:21:57.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="AI助手聊天系统项目文档"><a href="#AI助手聊天系统项目文档" class="headerlink" title="AI助手聊天系统项目文档"></a>AI助手聊天系统项目文档</h1><h2 id="项目概述"><a href="#项目概述" class="headerlink"]]>
+    </summary>
+    <title>AI助手聊天系统项目文档</title>
+    <updated>2025-12-30T05:42:41.947Z</updated>
   </entry>
-  
   <entry>
-    <title>kmp算法实现</title>
-    <link href="https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="408" scheme="https://codewith.top/categories/408/"/>
+    <category term="数据结构与算法" scheme="https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     <id>https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</id>
+    <link href="https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"/>
     <published>2025-12-15T09:24:31.000Z</published>
+    <summary>
+      <![CDATA[<h3 id="下面是kmp算法的具体实现"><a href="#下面是kmp算法的具体实现" class="headerlink" title="下面是kmp算法的具体实现"></a>下面是kmp算法的具体实现</h3><figure class="highlight c++"><table><tr><td]]>
+    </summary>
+    <title>kmp算法实现</title>
     <updated>2025-12-27T05:14:37.532Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;下面是kmp算法的具体实现&quot;&gt;&lt;a href=&quot;#下面是kmp算法的具体实现&quot; class=&quot;headerlink&quot; title=&quot;下面是kmp算法的具体实现&quot;&gt;&lt;/a&gt;下面是kmp算法的具体实现&lt;/h3&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
-    <category term="数据结构与算法" scheme="https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
   </entry>
-  
   <entry>
-    <title>树的性质</title>
-    <link href="https://codewith.top/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="408" scheme="https://codewith.top/categories/408/"/>
+    <category term="数据结构与算法" scheme="https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     <id>https://codewith.top/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/</id>
+    <link href="https://codewith.top/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/"/>
     <published>2025-11-17T02:50:55.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="一、-树的基本定义和性质"><a href="#一、-树的基本定义和性质" class="headerlink" title="一、 树的基本定义和性质"></a>一、 树的基本定义和性质</h1><h2 id="1-树的逻辑结构定义"><a href="#1-树的逻辑结构定义"]]>
+    </summary>
+    <title>树的性质</title>
     <updated>2025-11-17T02:58:37.833Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、-树的基本定义和性质&quot;&gt;&lt;a href=&quot;#一、-树的基本定义和性质&quot; class=&quot;headerlink&quot; title=&quot;一、 树的基本定义和性质&quot;&gt;&lt;/a&gt;一、 树的基本定义和性质&lt;/h1&gt;&lt;h2 id=&quot;1-树的逻辑结构定义&quot;&gt;&lt;a href=&quot;#1-树的逻辑结构定义&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
-    <category term="数据结构与算法" scheme="https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
   </entry>
-  
   <entry>
-    <title>Cache替换算法</title>
-    <link href="https://codewith.top/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="408" scheme="https://codewith.top/categories/408/"/>
+    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     <id>https://codewith.top/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/</id>
+    <link href="https://codewith.top/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/"/>
     <published>2025-09-03T14:04:17.000Z</published>
+    <summary>
+      <![CDATA[<h3 id="替换算法汇总"><a href="#替换算法汇总" class="headerlink"]]>
+    </summary>
+    <title>Cache替换算法</title>
     <updated>2025-09-03T14:26:20.351Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;替换算法汇总&quot;&gt;&lt;a href=&quot;#替换算法汇总&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
   </entry>
-  
   <entry>
-    <title>Cache映射</title>
-    <link href="https://codewith.top/2025/09/03/Cache%E6%98%A0%E5%B0%84/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="408" scheme="https://codewith.top/categories/408/"/>
+    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     <id>https://codewith.top/2025/09/03/Cache%E6%98%A0%E5%B0%84/</id>
+    <link href="https://codewith.top/2025/09/03/Cache%E6%98%A0%E5%B0%84/"/>
     <published>2025-09-03T13:44:47.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="一、Cache基本概念"><a href="#一、Cache基本概念" class="headerlink"]]>
+    </summary>
+    <title>Cache映射</title>
     <updated>2025-09-03T13:57:12.391Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一、Cache基本概念&quot;&gt;&lt;a href=&quot;#一、Cache基本概念&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
   </entry>
-  
   <entry>
-    <title>Cache块有效性</title>
-    <link href="https://codewith.top/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="408" scheme="https://codewith.top/categories/408/"/>
+    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     <id>https://codewith.top/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/</id>
+    <link href="https://codewith.top/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/"/>
     <published>2025-09-03T13:10:46.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Cache块有效性"><a href="#Cache块有效性" class="headerlink" title="Cache块有效性"></a>Cache块有效性</h2><h3 id="一，什么是Cache的有效性"><a href="#一，什么是Cache的有效性"]]>
+    </summary>
+    <title>Cache块有效性</title>
     <updated>2025-09-03T13:36:21.438Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Cache块有效性&quot;&gt;&lt;a href=&quot;#Cache块有效性&quot; class=&quot;headerlink&quot; title=&quot;Cache块有效性&quot;&gt;&lt;/a&gt;Cache块有效性&lt;/h2&gt;&lt;h3 id=&quot;一，什么是Cache的有效性&quot;&gt;&lt;a href=&quot;#一，什么是Cache的有效性&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
-    <category term="计算机组成原理" scheme="https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
   </entry>
-  
   <entry>
-    <title>排序算法(C++实现)</title>
-    <link href="https://codewith.top/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/"/>
-    <id>https://codewith.top/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/</id>
-    <published>2025-09-01T13:34:26.000Z</published>
-    <updated>2025-09-02T14:35:28.707Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h3&gt;&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>Morris</name>
+    </author>
     <category term="408" scheme="https://codewith.top/categories/408/"/>
-    
-    
     <category term="数据结构与算法" scheme="https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
+    <id>https://codewith.top/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/</id>
+    <link href="https://codewith.top/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/"/>
+    <published>2025-09-01T13:34:26.000Z</published>
+    <summary>
+      <![CDATA[<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span]]>
+    </summary>
+    <title>排序算法(C++实现)</title>
+    <updated>2025-09-02T14:35:28.707Z</updated>
   </entry>
-  
   <entry>
-    <title>JVM 常用命令</title>
-    <link href="https://codewith.top/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="Java基础" scheme="https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
     <id>https://codewith.top/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <link href="https://codewith.top/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <published>2025-08-11T06:18:37.000Z</published>
+    <summary>
+      <![CDATA[<ul>
+<li><strong>JPS</strong>：JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。</li>
+<li><strong>jstat</strong>：jstat(JVM statistics]]>
+    </summary>
+    <title>JVM 常用命令</title>
     <updated>2025-08-14T13:32:52.937Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;JPS&lt;/strong&gt;：JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;jstat&lt;/strong&gt;：jstat(JVM statistics</summary>
-        
-      
-    
-    
-    
-    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
-    
-    
-    <category term="Java基础" scheme="https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
   </entry>
-  
   <entry>
-    <title>sleep() 和 wait() 有什么区别</title>
-    <link href="https://codewith.top/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="Java基础" scheme="https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
     <id>https://codewith.top/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</id>
+    <link href="https://codewith.top/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
     <published>2025-08-11T05:54:40.000Z</published>
+    <summary>
+      <![CDATA[<p><strong>sleep方法</strong>：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）</p>
+<p><strong>wait方法</strong>：是Object的方法，必须与synchron]]>
+    </summary>
+    <title>sleep() 和 wait() 有什么区别</title>
     <updated>2025-08-11T06:03:40.157Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;sleep方法&lt;/strong&gt;：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;wait方法&lt;/strong&gt;：是Object的方法，必须与synchron</summary>
-        
-      
-    
-    
-    
-    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
-    
-    
-    <category term="Java基础" scheme="https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
   </entry>
-  
   <entry>
-    <title>数据库三范式的理解与看法</title>
-    <link href="https://codewith.top/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/"/>
+    <author>
+      <name>Morris</name>
+    </author>
+    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="MySQL" scheme="https://codewith.top/tags/MySQL/"/>
     <id>https://codewith.top/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/</id>
+    <link href="https://codewith.top/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/"/>
     <published>2025-08-09T05:27:05.000Z</published>
+    <summary>
+      <![CDATA[<p>数据库三范式（First Normal Form, 1NF；Second Normal Form, 2NF；Third Normal Form,]]>
+    </summary>
+    <title>数据库三范式的理解与看法</title>
     <updated>2025-08-09T05:32:28.948Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;数据库三范式（First Normal Form, 1NF；Second Normal Form, 2NF；Third Normal Form,</summary>
-        
-      
-    
-    
-    
-    <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
-    
-    
-    <category term="MySQL" scheme="https://codewith.top/tags/MySQL/"/>
-    
   </entry>
-  
   <entry>
-    <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
-    <link href="https://codewith.top/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/"/>
-    <id>https://codewith.top/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</id>
-    <published>2025-08-08T06:50:05.000Z</published>
-    <updated>2025-08-08T06:57:29.236Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在 Java 中，使用 &lt;strong&gt;&lt;code&gt;new String(&amp;quot;abc&amp;quot;)&lt;/code&gt; 可能创建 &lt;strong&gt;1 个或 2 个对象&lt;/strong&gt;&lt;/strong&gt;，具体取决于字符串常量池（String Pool）中是否已存在 “abc”</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>Morris</name>
+    </author>
     <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
-    
-    
     <category term="Java基础" scheme="https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
+    <id>https://codewith.top/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/</id>
+    <link href="https://codewith.top/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/"/>
+    <published>2025-08-08T06:50:05.000Z</published>
+    <summary>
+      <![CDATA[<p>在 Java 中，使用 <strong><code>new String(&quot;abc&quot;)</code> 可能创建 <strong>1 个或 2 个对象</strong></strong>，具体取决于字符串常量池（String Pool）中是否已存在 “abc”]]>
+    </summary>
+    <title>new String(&quot;abc&quot;)创建了多少个对象？</title>
+    <updated>2025-08-08T06:57:29.236Z</updated>
   </entry>
-  
   <entry>
-    <title>MySQL面试题</title>
-    <link href="https://codewith.top/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://codewith.top/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
-    <published>2025-08-07T17:10:55.000Z</published>
-    <updated>2025-08-07T17:11:33.404Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;MyISAM和InnoDB的区别有哪些&quot;&gt;&lt;a href=&quot;#MyISAM和InnoDB的区别有哪些&quot; class=&quot;headerlink&quot; title=&quot;MyISAM和InnoDB的区别有哪些&quot;&gt;&lt;/a&gt;MyISAM和InnoDB的区别有哪些&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;InnoDB支持事务,</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>Morris</name>
+    </author>
     <category term="Java面试" scheme="https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/"/>
-    
-    
     <category term="MySQL" scheme="https://codewith.top/tags/MySQL/"/>
-    
+    <id>https://codewith.top/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <link href="https://codewith.top/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <published>2025-08-07T17:10:55.000Z</published>
+    <summary>
+      <![CDATA[<h3 id="MyISAM和InnoDB的区别有哪些"><a href="#MyISAM和InnoDB的区别有哪些" class="headerlink" title="MyISAM和InnoDB的区别有哪些"></a>MyISAM和InnoDB的区别有哪些</h3><ul>
+<li>InnoDB支持事务,]]>
+    </summary>
+    <title>MySQL面试题</title>
+    <updated>2025-08-07T17:11:33.404Z</updated>
   </entry>
-  
 </feed>
