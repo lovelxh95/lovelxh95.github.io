@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             margin: 24,
             background: '#fff',
             scrollOffset: 0,
+            zIndex: 10000,
         });
     }
 });

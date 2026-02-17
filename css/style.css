@@ -763,3 +763,9 @@ body.header-fixed .tab-nav {
 .back-to-top svg {
   fill: currentColor;
 }
+
+/* Medium Zoom Overrides */
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 10000 !important;
+}
