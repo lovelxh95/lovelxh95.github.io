@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /archives
+Allow: /tags
+Allow: /categories
+
+Disallow: /admin/
+Disallow: /db.json
+Disallow: /admin-config.yml
+
+Sitemap: https://codewith.top/sitemap.xml
+Sitemap: https://codewith.top/baidusitemap.xml
