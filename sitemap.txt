@@ -18,11 +18,11 @@ https://codewith.top/tags/index.html
 https://codewith.top/categories/index.html
 https://codewith.top/about/index.html
 https://codewith.top/
-https://codewith.top/tags/python%E5%BC%80%E5%8F%91/
 https://codewith.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/
+https://codewith.top/tags/python%E5%BC%80%E5%8F%91/
 https://codewith.top/tags/Java%E5%9F%BA%E7%A1%80/
 https://codewith.top/tags/MySQL/
 https://codewith.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/
-https://codewith.top/categories/fastapi/
 https://codewith.top/categories/408/
+https://codewith.top/categories/fastapi/
 https://codewith.top/categories/Java%E9%9D%A2%E8%AF%95/
