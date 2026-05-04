@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 <head>
   <!-- SEO Meta Tags -->
 <meta charset="UTF-8">
@@ -10,7 +10,9 @@
 
 
 <title>About  | Morris</title>
-<meta name="description" content="分享技术文章和生活感悟">
+<meta name="description" content="About Me嗨，我是Morris，23 岁，现居广州，目前正在做PHP开发 技能Java · Spring Boot · MyBatis · Redis · MySQL · Vue · Hadoop · Spark · Hive PHp: hyperf lavarel Go: go-zero 我会做什么 全栈开发：">
+
+<meta name="keywords" content="Java, 后端开发, 数据库, Redis, MySQL, 算法, AI, 面试, Morris">
 
 <meta name="author" content="Morris">
 <link rel="canonical" href="https://codewith.top/about/index.html">
@@ -19,11 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codewith.top/about/index.html">
 <meta property="og:title" content="About ">
-<meta property="og:description" content="分享技术文章和生活感悟">
+<meta property="og:description" content="About Me嗨，我是Morris，23 岁，现居广州，目前正在做PHP开发 技能Java · Spring Boot · MyBatis · Redis · MySQL · Vue · Hadoop · Spark · Hive PHp: hyperf lavarel Go: go-zero 我会做什么 全栈开发：Java 后端 (or Python ) + Vue 前端 数据工程：Hadoo">
 <meta property="og:site_name" content="Morris">
-<meta property="og:locale" content="cn">
+<meta property="og:locale" content="zh_CN">
 
-<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:image" content="https://codewith.top/images/img.jpg">
+<meta property="og:image:secure_url" content="https://codewith.top/images/img.jpg">
 
 
 
@@ -31,16 +34,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codewith.top/about/index.html">
 <meta name="twitter:title" content="About ">
-<meta name="twitter:description" content="分享技术文章和生活感悟">
+<meta name="twitter:description" content="About Me嗨，我是Morris，23 岁，现居广州，目前正在做PHP开发 技能Java · Spring Boot · MyBatis · Redis · MySQL · Vue · Hadoop · Spark · Hive PHp: hyperf lavarel Go: go-zero 我会做什么 全栈开发：Java 后端 (or Python ) + Vue 前端 数据工程：Hadoo">
 
 
-<meta name="twitter:image" content="/images/og-image.jpg">
+<meta name="twitter:image" content="https://codewith.top/images/img.jpg">
 
 
 <!-- 其他SEO优化 -->
+
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta name="theme-color" content="#0f766e">
 
 
 <meta name="date" content="2025-08-07T23:39:08+08:00" scheme="YYYY-MM-DDThh:mm:ssTZD">
@@ -59,6 +65,7 @@
 
 <link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
 
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
 
 <!-- 样式表 -->
 <link rel="stylesheet" href="/css/style.css">
@@ -79,30 +86,8 @@
   
   
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Morris","description":"Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。","url":"https://codewith.top/","author":{"@type":"Person","name":"Morris"},"sameAs":["https://github.com/lovelxh95"]}</script>
 
-<!-- 网站结构化数据 WebSite Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Morris",
-  "description": "",
-  "url": "https://codewith.top",
-  "author": {
-    "@type": "Person",
-    "name": "Morris"
-  }
-  
-  ,"sameAs": [
-    "https://github.com/lovelxh95"
-    , "https://twitter.com/yourname"
-  ]
-  
-}
-</script>
-
-
-<!-- 面包屑导航结构化数据 -->
 
 
   
@@ -111,13 +96,13 @@
   <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <a href="/" style="color: #fff; text-decoration: none; display: flex; align-items: center;">
+      <a class="header-brand" href="/">
         
-          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" style="fill: white; margin-right: 8px;">
+          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="header-brand-mark">
               <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
           </svg>
         
-        <span>GitHub</span>
+        <span>Morris</span>
       </a>
     </div>
     <div class="header-nav">
@@ -202,12 +187,12 @@
   </div>
 </div>
 
-      <div class="post-content-container" style="border: 1px solid #d0d7de; border-radius: 6px;">
-  <div class="post-header" style="background-color: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: 16px; border-top-left-radius: 6px; border-top-right-radius: 6px;">
-    <h1 style="margin: 0; font-size: 20px; font-weight: 600;">About </h1>
+      <div class="post-content-container">
+  <div class="post-header">
+    <h1 class="post-page-title">About </h1>
   </div>
   
-  <div class="post-body" style="padding: 32px;">
+  <div class="post-body">
     <div class="post-content">
       <h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p>嗨，我是Morris，23 岁，现居广州，目前正在做PHP开发</p>
 <h3 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h3><p>Java · Spring Boot · MyBatis · Redis · MySQL · Vue · Hadoop · Spark · Hive</p>
@@ -224,9 +209,9 @@
 <li>AI 企业 RAG 问答系统（LangChain4j + Redis + 流式响应）</li>
 <li>天气预警平台（Python + FastAPI + Scikit-learn）</li>
 </ul>
-<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p>GitHub：<a href="https://">https://github.com/lovelxh95</a></p>
-<p>email：<a href="mailto:&#98;&#x6c;&#x6f;&#x67;&#x40;&#x63;&#x6f;&#x64;&#101;&#x77;&#x69;&#116;&#x68;&#x2e;&#x74;&#111;&#x70;">blog@codewith.top</a></p>
-<p>Gitee：<a href="https://">https://gitee.com/lphxhlxh</a></p>
+<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/lovelxh95">https://github.com/lovelxh95</a></p>
+<p>email：<a href="mailto:&#98;&#x6c;&#111;&#x67;&#x40;&#x63;&#x6f;&#100;&#x65;&#x77;&#105;&#x74;&#104;&#x2e;&#x74;&#111;&#112;">blog@codewith.top</a></p>
+<p>Gitee：<a target="_blank" rel="noopener" href="https://gitee.com/lphxhlxh">https://gitee.com/lphxhlxh</a></p>
 <p><img src="https://tool.lu/netcard/" alt="IP签名"></p>
 
     </div>

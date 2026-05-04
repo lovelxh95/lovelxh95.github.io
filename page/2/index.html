@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 <head>
   <!-- SEO Meta Tags -->
 <meta charset="UTF-8">
@@ -10,7 +10,9 @@
 
 
 <title>Morris</title>
-<meta name="description" content="分享技术文章和生活感悟">
+<meta name="description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
+
+<meta name="keywords" content="Java, 后端开发, 数据库, Redis, MySQL, 算法, AI, 面试, Morris">
 
 <meta name="author" content="Morris">
 <link rel="canonical" href="https://codewith.top/page/2/index.html">
@@ -19,11 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codewith.top/page/2/index.html">
 <meta property="og:title" content="Morris">
-<meta property="og:description" content="分享技术文章和生活感悟">
+<meta property="og:description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
 <meta property="og:site_name" content="Morris">
-<meta property="og:locale" content="cn">
+<meta property="og:locale" content="zh_CN">
 
-<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:image" content="https://codewith.top/images/img.jpg">
+<meta property="og:image:secure_url" content="https://codewith.top/images/img.jpg">
 
 
 
@@ -31,16 +34,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codewith.top/page/2/index.html">
 <meta name="twitter:title" content="Morris">
-<meta name="twitter:description" content="分享技术文章和生活感悟">
+<meta name="twitter:description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
 
 
-<meta name="twitter:image" content="/images/og-image.jpg">
+<meta name="twitter:image" content="https://codewith.top/images/img.jpg">
 
 
 <!-- 其他SEO优化 -->
+
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta name="theme-color" content="#0f766e">
 
 
 
@@ -55,6 +61,7 @@
 
 <link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
 
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
 
 <!-- 样式表 -->
 <link rel="stylesheet" href="/css/style.css">
@@ -75,30 +82,8 @@
   
   
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Morris","description":"Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。","url":"https://codewith.top/","author":{"@type":"Person","name":"Morris"},"sameAs":["https://github.com/lovelxh95"]}</script>
 
-<!-- 网站结构化数据 WebSite Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Morris",
-  "description": "",
-  "url": "https://codewith.top",
-  "author": {
-    "@type": "Person",
-    "name": "Morris"
-  }
-  
-  ,"sameAs": [
-    "https://github.com/lovelxh95"
-    , "https://twitter.com/yourname"
-  ]
-  
-}
-</script>
-
-
-<!-- 面包屑导航结构化数据 -->
 
 
   
@@ -107,13 +92,13 @@
   <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <a href="/" style="color: #fff; text-decoration: none; display: flex; align-items: center;">
+      <a class="header-brand" href="/">
         
-          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" style="fill: white; margin-right: 8px;">
+          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="header-brand-mark">
               <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
           </svg>
         
-        <span>GitHub</span>
+        <span>Morris</span>
       </a>
     </div>
     <div class="header-nav">
@@ -204,16 +189,16 @@
   <!-- Left: Heatmaps Container -->
   <div class="contribution-graph-container">
     
-      <div class="heatmap-year-container" id="heatmap-2026" >
+      <div class="heatmap-year-container " id="heatmap-2026">
         <div class="heatmap-header">
           <div class="heatmap-title">Contribution activity (2026)</div>
           <div class="heatmap-legend">
             <span>Less</span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L1-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L2-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L3-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L4-bg)"></span>
+            <span class="legend-item legend-level-0"></span>
+            <span class="legend-item legend-level-1"></span>
+            <span class="legend-item legend-level-2"></span>
+            <span class="legend-item legend-level-3"></span>
+            <span class="legend-item legend-level-4"></span>
             <span>More</span>
           </div>
         </div>
@@ -4135,16 +4120,16 @@
         </div>
       </div>
     
-      <div class="heatmap-year-container" id="heatmap-2025" style="display:none;">
+      <div class="heatmap-year-container is-hidden" id="heatmap-2025">
         <div class="heatmap-header">
           <div class="heatmap-title">Contribution activity (2025)</div>
           <div class="heatmap-legend">
             <span>Less</span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L1-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L2-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L3-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L4-bg)"></span>
+            <span class="legend-item legend-level-0"></span>
+            <span class="legend-item legend-level-1"></span>
+            <span class="legend-item legend-level-2"></span>
+            <span class="legend-item legend-level-3"></span>
+            <span class="legend-item legend-level-4"></span>
             <span>More</span>
           </div>
         </div>
@@ -8089,13 +8074,13 @@ function switchHeatmap(year, btn) {
   // Hide all heatmaps
   var heatmaps = document.querySelectorAll('.heatmap-year-container');
   for (var i = 0; i < heatmaps.length; i++) {
-    heatmaps[i].style.display = 'none';
+    heatmaps[i].classList.add('is-hidden');
   }
   
   // Show target heatmap
   var target = document.getElementById('heatmap-' + year);
   if (target) {
-    target.style.display = 'block';
+    target.classList.remove('is-hidden');
   }
   
   // Update active button
@@ -8113,7 +8098,7 @@ function switchHeatmap(year, btn) {
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/08/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E8%8C%83%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E7%9C%8B%E6%B3%95/">数据库三范式的理解与看法</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         数据库三范式（First Normal Form, 1NF；Second Normal Form, 2NF；Third Normal Form, 3NF）是关系型数据库设计中用于减少数据冗余、避免更新异常（插入、删除、修改异常）的核心原则。其本质是通过对数据表的结构化拆分，确保数据的“原子性”和“依...
@@ -8128,21 +8113,21 @@ function switchHeatmap(year, btn) {
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Aug 9</span>
+        <span>Updated 8月 9</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/08/08/new-String-abc-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%9F/">new String(&#34;abc&#34;)创建了多少个对象？</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         在 Java 中，使用 new String(&amp;quot;abc&amp;quot;) 可能创建 1 个或 2 个对象，具体取决于字符串常量池（String Pool）中是否已存在 “abc” 这个字符串：
@@ -8163,21 +8148,21 @@ function switchHeatmap(year, btn) {
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Aug 8</span>
+        <span>Updated 8月 8</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/08/08/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/">MySQL面试题</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         MyISAM和InnoDB的区别有哪些
@@ -8197,21 +8182,21 @@ MyISAM支持全文索引, InnoDB部分版本不支持(...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Aug 8</span>
+        <span>Updated 8月 8</span>
       </div>
     </div>
   
 </div>
 
 
-  <nav class="pagination" style="margin-top: 20px; text-align: center;">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 

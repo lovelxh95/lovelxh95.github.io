@@ -3,7 +3,8 @@
   <channel>
     <title>Morris</title>
     <link>https://codewith.top/</link>
-    <language>cn</language>
+    <description>Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。</description>
+    <language>zh-CN</language>
     <copyright>All rights reserved 2026, Morris</copyright>
     <lastBuildDate>Sat, 03 Jan 2026 07:41:56 GMT</lastBuildDate>
     <generator>Hexo</generator>

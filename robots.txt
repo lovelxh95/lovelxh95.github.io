@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /test/
+Disallow: /books/
+Disallow: /repository/
+
+Sitemap: https://codewith.top/sitemap.xml
+Sitemap: https://codewith.top/baidusitemap.xml

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 <head>
   <!-- SEO Meta Tags -->
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 
 
 <title>kmp算法实现 | Morris</title>
-<meta name="description" content="分享技术文章和生活感悟">
+<meta name="description" content="下面是kmp算法的具体实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
 
 <meta name="keywords" content="数据结构与算法">
 
@@ -21,11 +21,12 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">
 <meta property="og:title" content="kmp算法实现">
-<meta property="og:description" content="分享技术文章和生活感悟">
+<meta property="og:description" content="下面是kmp算法的具体实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;s">
 <meta property="og:site_name" content="Morris">
-<meta property="og:locale" content="cn">
+<meta property="og:locale" content="zh_CN">
 
-<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:image" content="https://codewith.top/images/img.jpg">
+<meta property="og:image:secure_url" content="https://codewith.top/images/img.jpg">
 
 
 <meta property="article:published_time" content="2025-12-15T17:24:31+08:00">
@@ -45,16 +46,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">
 <meta name="twitter:title" content="kmp算法实现">
-<meta name="twitter:description" content="分享技术文章和生活感悟">
+<meta name="twitter:description" content="下面是kmp算法的具体实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;s">
 
 
-<meta name="twitter:image" content="/images/og-image.jpg">
+<meta name="twitter:image" content="https://codewith.top/images/img.jpg">
 
 
 <!-- 其他SEO优化 -->
+
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta name="theme-color" content="#0f766e">
 
 
 <meta name="date" content="2025-12-15T17:24:31+08:00" scheme="YYYY-MM-DDThh:mm:ssTZD">
@@ -73,6 +77,7 @@
 
 <link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
 
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
 
 <!-- 样式表 -->
 <link rel="stylesheet" href="/css/style.css">
@@ -93,73 +98,10 @@
   
   
 
-
-<!-- 文章结构化数据 Article Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"
-  },
-  "headline": "kmp算法实现",
-  "description": "",
-  "image": "/images/og-image.jpg",
-  "datePublished": "2025-12-15T17:24:31+08:00",
-  "dateModified": "2025-12-27T13:14:37+08:00",
-  "author": {
-    "@type": "Person",
-    "name": "Morris"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Morris",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://codewith.top/images/img.jpg"
-    }
-  }
-  
-  ,"keywords": "数据结构与算法"
-  
-  
-  ,"articleSection": "408"
-  
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"},"headline":"kmp算法实现","description":"下面是kmp算法的具体实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&","image":["https://codewith.top/images/img.jpg"],"datePublished":"2025-12-15T17:24:31+08:00","dateModified":"2025-12-27T13:14:37+08:00","author":{"@type":"Person","name":"Morris","url":"https://github.com/lovelxh95"},"publisher":{"@type":"Organization","name":"Morris","logo":{"@type":"ImageObject","url":"https://codewith.top/images/img.jpg"}},"keywords":"数据结构与算法","articleSection":"408"}</script>
 
 
-<!-- 面包屑导航结构化数据 -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "首页",
-      "item": "https://codewith.top/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "408",
-      "item": "https://codewith.top/categories/408/"
-    }
-    
-    ,{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "kmp算法实现",
-      "item": "https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"
-    }
-    
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://codewith.top/"},{"@type":"ListItem","position":2,"name":"408","item":"https://codewith.top/categories/408/"},{"@type":"ListItem","position":3,"name":"kmp算法实现","item":"https://codewith.top/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/"}]}</script>
 
 
   
@@ -168,13 +110,13 @@
   <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <a href="/" style="color: #fff; text-decoration: none; display: flex; align-items: center;">
+      <a class="header-brand" href="/">
         
-          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" style="fill: white; margin-right: 8px;">
+          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="header-brand-mark">
               <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
           </svg>
         
-        <span>GitHub</span>
+        <span>Morris</span>
       </a>
     </div>
     <div class="header-nav">
@@ -262,16 +204,16 @@
       <div class="post-layout-wrapper">
   <div class="post-content-container">
     <div class="post-header">
-      <h1 style="margin: 0; font-size: 20px; font-weight: 600;">kmp算法实现</h1>
-      <div class="post-meta" style="margin-top: 8px; font-size: 13px; color: #57606a;">
+      <h1 class="post-page-title">kmp算法实现</h1>
+      <div class="post-meta post-page-meta">
         <span>2025-12-15</span>
         
-          <span style="margin: 0 8px;">•</span>
+          <span class="meta-separator">/</span>
           <a class="post-category-link" href="/categories/408/">408</a>
         
         
         
-          <span style="margin: 0 8px;">•</span>
+          <span class="meta-separator">/</span>
           
             <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
               #数据结构与算法
@@ -300,7 +242,7 @@
 </div>
 
 
-  <div class="post-nav" style="margin-top: 24px; display: flex; justify-content: space-between;">
+  <div class="post-nav">
     
       <a href="/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="prev">
         &laquo; AI助手聊天系统项目文档

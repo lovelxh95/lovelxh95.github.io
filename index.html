@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 <head>
   <!-- SEO Meta Tags -->
 <meta charset="UTF-8">
@@ -10,7 +10,9 @@
 
 
 <title>Morris</title>
-<meta name="description" content="分享技术文章和生活感悟">
+<meta name="description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
+
+<meta name="keywords" content="Java, 后端开发, 数据库, Redis, MySQL, 算法, AI, 面试, Morris">
 
 <meta name="author" content="Morris">
 <link rel="canonical" href="https://codewith.top/index.html">
@@ -19,11 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codewith.top/index.html">
 <meta property="og:title" content="Morris">
-<meta property="og:description" content="分享技术文章和生活感悟">
+<meta property="og:description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
 <meta property="og:site_name" content="Morris">
-<meta property="og:locale" content="cn">
+<meta property="og:locale" content="zh_CN">
 
-<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:image" content="https://codewith.top/images/img.jpg">
+<meta property="og:image:secure_url" content="https://codewith.top/images/img.jpg">
 
 
 
@@ -31,16 +34,19 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codewith.top/index.html">
 <meta name="twitter:title" content="Morris">
-<meta name="twitter:description" content="分享技术文章和生活感悟">
+<meta name="twitter:description" content="Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。">
 
 
-<meta name="twitter:image" content="/images/og-image.jpg">
+<meta name="twitter:image" content="https://codewith.top/images/img.jpg">
 
 
 <!-- 其他SEO优化 -->
+
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta name="theme-color" content="#0f766e">
 
 
 
@@ -55,6 +61,7 @@
 
 <link rel="alternate" href="/atom.xml" title="Morris" type="application/atom+xml">
 
+<link rel="alternate" href="/rss2.xml" title="Morris" type="application/rss+xml">
 
 <!-- 样式表 -->
 <link rel="stylesheet" href="/css/style.css">
@@ -75,30 +82,8 @@
   
   
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Morris","description":"Morris 的个人技术博客，记录 Java、后端开发、数据库、缓存、算法、AI 应用和日常学习笔记。","url":"https://codewith.top/","author":{"@type":"Person","name":"Morris"},"sameAs":["https://github.com/lovelxh95"]}</script>
 
-<!-- 网站结构化数据 WebSite Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Morris",
-  "description": "",
-  "url": "https://codewith.top",
-  "author": {
-    "@type": "Person",
-    "name": "Morris"
-  }
-  
-  ,"sameAs": [
-    "https://github.com/lovelxh95"
-    , "https://twitter.com/yourname"
-  ]
-  
-}
-</script>
-
-
-<!-- 面包屑导航结构化数据 -->
 
 
   
@@ -107,13 +92,13 @@
   <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <a href="/" style="color: #fff; text-decoration: none; display: flex; align-items: center;">
+      <a class="header-brand" href="/">
         
-          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" style="fill: white; margin-right: 8px;">
+          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="header-brand-mark">
               <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
           </svg>
         
-        <span>GitHub</span>
+        <span>Morris</span>
       </a>
     </div>
     <div class="header-nav">
@@ -204,16 +189,16 @@
   <!-- Left: Heatmaps Container -->
   <div class="contribution-graph-container">
     
-      <div class="heatmap-year-container" id="heatmap-2026" >
+      <div class="heatmap-year-container " id="heatmap-2026">
         <div class="heatmap-header">
           <div class="heatmap-title">Contribution activity (2026)</div>
           <div class="heatmap-legend">
             <span>Less</span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L1-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L2-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L3-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L4-bg)"></span>
+            <span class="legend-item legend-level-0"></span>
+            <span class="legend-item legend-level-1"></span>
+            <span class="legend-item legend-level-2"></span>
+            <span class="legend-item legend-level-3"></span>
+            <span class="legend-item legend-level-4"></span>
             <span>More</span>
           </div>
         </div>
@@ -4135,16 +4120,16 @@
         </div>
       </div>
     
-      <div class="heatmap-year-container" id="heatmap-2025" style="display:none;">
+      <div class="heatmap-year-container is-hidden" id="heatmap-2025">
         <div class="heatmap-header">
           <div class="heatmap-title">Contribution activity (2025)</div>
           <div class="heatmap-legend">
             <span>Less</span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L1-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L2-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L3-bg)"></span>
-            <span class="legend-item" style="background-color: var(--color-calendar-graph-day-L4-bg)"></span>
+            <span class="legend-item legend-level-0"></span>
+            <span class="legend-item legend-level-1"></span>
+            <span class="legend-item legend-level-2"></span>
+            <span class="legend-item legend-level-3"></span>
+            <span class="legend-item legend-level-4"></span>
             <span>More</span>
           </div>
         </div>
@@ -8089,13 +8074,13 @@ function switchHeatmap(year, btn) {
   // Hide all heatmaps
   var heatmaps = document.querySelectorAll('.heatmap-year-container');
   for (var i = 0; i < heatmaps.length; i++) {
-    heatmaps[i].style.display = 'none';
+    heatmaps[i].classList.add('is-hidden');
   }
   
   // Show target heatmap
   var target = document.getElementById('heatmap-' + year);
   if (target) {
-    target.style.display = 'block';
+    target.classList.remove('is-hidden');
   }
   
   // Update active button
@@ -8113,7 +8098,7 @@ function switchHeatmap(year, btn) {
     <div class="post-card">
       <div class="post-title">
         <a href="/2026/01/03/Java%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%EF%BC%881%EF%BC%89/">Java开发面试（1）</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         请解释 Java 中集合框架的层次结构，并举例说明 ArrayList 和 LinkedList 的区别及其适用场景一、 Java 集合框架的层次结构Java 集合框架主要由两大根接口组成：Collection 和 Map。
@@ -8124,21 +8109,21 @@ List (有序、可重复)...
       <div class="post-meta">
         
            <span class="language-item">
-            <span class="language-dot" style="background-color: #ccc;"></span>
+            <span class="language-dot language-dot-muted"></span>
             Markdown
           </span>
         
         
         
         
-        <span>Updated Jan 3</span>
+        <span>Updated 1月 3</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/12/27/AI%E5%8A%A9%E6%89%8B%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/">AI助手聊天系统项目文档</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         AI助手聊天系统项目文档项目概述AI助手聊天系统是一个基于FastAPI和Vue.js的现代化AI对话平台，支持多模型切换、实时流式对话传输和对话历史管理功能。用户可以通过该系统与各种AI模型进行交互，系统会自动保存对话历史，方便用户随时查看和继续之前的对话。
@@ -8155,21 +8140,21 @@ List (有序、可重复)...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Dec 30</span>
+        <span>Updated 12月 30</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/12/15/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">kmp算法实现</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         下面是kmp算法的具体实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273...
@@ -8184,21 +8169,21 @@ List (有序、可重复)...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Dec 27</span>
+        <span>Updated 12月 27</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/11/17/%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8/">树的性质</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         一、 树的基本定义和性质1. 树的逻辑结构定义树是 n（n &amp;gt;&amp;#x3D; 0）个结点的有限集合。
@@ -8217,21 +8202,21 @@ List (有序、可重复)...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Nov 17</span>
+        <span>Updated 11月 17</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/09/03/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/">Cache替换算法</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         替换算法汇总
@@ -8267,21 +8252,21 @@ FIFO（First In First Out）...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Sep 3</span>
+        <span>Updated 9月 3</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/09/03/Cache%E6%98%A0%E5%B0%84/">Cache映射</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         一、Cache基本概念
@@ -8301,21 +8286,21 @@ C...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Sep 3</span>
+        <span>Updated 9月 3</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/09/03/Cache%E5%9D%97%E6%9C%89%E6%95%88%E6%80%A7/">Cache块有效性</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         Cache块有效性一，什么是Cache的有效性在 Cache 结构中，数据是以块（Block 或 Line）为单位存储的。每个 Cache 块通常包含以下几个部分
@@ -8336,21 +8321,21 @@ C...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Sep 3</span>
+        <span>Updated 9月 3</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/09/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95(C++%E5%AE%9E%E7%8E%B0)/">排序算法(C++实现)</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         冒泡排序123456789void bubble_sort(int* arr, int n)&amp;#123;    for(int i=0;i&amp;lt;n-1;i++)&amp;#123;        for(int j=0;j&amp;lt;n-i-1;j++)&amp;#123;            if(arr[j] ...
@@ -8365,21 +8350,21 @@ C...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Sep 2</span>
+        <span>Updated 9月 2</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/08/11/JVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">JVM 常用命令</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         
@@ -8397,21 +8382,21 @@ jma...
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Aug 14</span>
+        <span>Updated 8月 14</span>
       </div>
     </div>
   
     <div class="post-card">
       <div class="post-title">
         <a href="/2025/08/11/sleep-%E5%92%8C-wait-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">sleep() 和 wait() 有什么区别</a>
-        <span style="float: right; font-weight: normal; font-size: 12px; color: #57606a; border: 1px solid #d0d7de; border-radius: 2em; padding: 0 7px; line-height: 18px;">Public</span>
+        <span class="post-visibility">Public</span>
       </div>
       <div class="post-excerpt">
         sleep方法：是Thread类的静态方法，当前线程将睡眠n毫秒，线程进入阻塞状态。当睡眠时间到了，会解除阻塞，进入可运行状态，等待CPU的到来。睡眠不释放锁（如果有的话）
@@ -8427,21 +8412,21 @@ wait方法：是Object的方法，必须与synchronized关键字一起使用，�
         
         
           <span>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star" style="fill: #57606a; vertical-align: text-bottom;">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
                 <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.719-4.192-3.046-2.97a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
             </svg>
             1
           </span>
         
         
-        <span>Updated Aug 11</span>
+        <span>Updated 8月 11</span>
       </div>
     </div>
   
 </div>
 
 
-  <nav class="pagination" style="margin-top: 20px; text-align: center;">
+  <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
