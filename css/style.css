@@ -23,7 +23,9 @@
   --shadow-lg: 0 24px 70px rgba(24, 33, 31, 0.12);
   --radius-sm: 8px;
   --radius-md: 12px;
-  --font-mono: Consolas, "Courier New", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --code-font-size: 12px;
+  --code-line-height: 20px;
   --header-height: 72px;
   --container-width: 1280px;
 }
@@ -512,7 +514,7 @@ body.header-fixed .header {
   background: rgba(175, 184, 193, 0.2);
   border-radius: 6px;
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: var(--code-font-size);
 }
 
 .post-content pre code {
@@ -553,16 +555,18 @@ body.header-fixed .header {
 .highlight {
   position: relative;
   margin: 20px 0;
-  padding: 16px;
+  padding: 0;
   overflow: auto;
   color: #24292f;
-  background: #f6f8fa;
-  border: 1px solid #d8dee4;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
   border-radius: 6px;
   box-shadow: none;
   font-family: var(--font-mono);
-  font-size: 20px;
-  line-height: 1.45;
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
+  tab-size: 8;
+  font-variant-ligatures: none;
 }
 
 .highlight pre,
@@ -578,6 +582,9 @@ body.header-fixed .header {
 .highlight pre {
   margin: 0;
   padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 .highlight:hover .copy-btn {
@@ -623,6 +630,8 @@ body.header-fixed .header {
   margin: 0;
   padding: 0;
   border: 0;
+  border-collapse: collapse;
+  background: #ffffff;
 }
 
 .highlight td,
@@ -633,14 +642,19 @@ body.header-fixed .header {
 }
 
 .highlight .gutter {
-  padding-right: 12px;
+  width: 50px;
+  min-width: 50px;
+  padding: 0 10px;
   color: #6e7781;
   text-align: right;
-  border-right: 1px solid #d0d7de;
+  border-right: 0;
+  user-select: none;
+  white-space: nowrap;
 }
 
 .highlight .code {
-  padding-left: 12px;
+  padding: 0 10px;
+  white-space: pre;
 }
 
 .highlight .keyword,
