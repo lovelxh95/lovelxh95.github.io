@@ -277,8 +277,27 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const tocContainer = document.querySelector('.post-toc-container');
   const tocLinks = document.querySelectorAll('.toc-link');
   const headings = Array.from(document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3'));
+  const postContent = document.querySelector('.post-content-container');
+
+  function updateReadingProgress() {
+    if (!tocContainer || !postContent) return;
+
+    const rect = postContent.getBoundingClientRect();
+    const start = window.scrollY + rect.top;
+    const end = start + postContent.offsetHeight - window.innerHeight;
+    const progress = end <= start ? 100 : ((window.scrollY - start) / (end - start)) * 100;
+    const clampedProgress = Math.max(0, Math.min(100, progress));
+
+    const alpha = 0.04 + (clampedProgress / 100) * 0.12;
+    tocContainer.style.setProperty('--reading-progress-alpha', alpha.toFixed(3));
+  }
+
+  updateReadingProgress();
+  window.addEventListener('scroll', updateReadingProgress, { passive: true });
+  window.addEventListener('resize', updateReadingProgress);
 
   if (tocLinks.length > 0 && headings.length > 0) {
     const observerOptions = {

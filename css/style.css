@@ -841,13 +841,17 @@ body.header-fixed .header {
 
 /* TOC Sidebar */
 .post-toc-container {
+  --reading-progress-alpha: 0.04;
   width: 224px;
   max-height: calc(100vh - 110px);
-  padding: 14px 0 14px 14px;
+  padding: 14px 12px 14px 14px;
   flex-shrink: 0;
   position: sticky;
   top: 100px;
   overflow-y: auto;
+  border-radius: var(--radius-md);
+  background: rgba(15, 118, 110, var(--reading-progress-alpha));
+  transition: background 0.12s linear;
 }
 
 .post-toc-header {
